@@ -23,7 +23,6 @@ body{
     position:fixed;
     width:10px;
     height:10px;
-    background:red;
     top:-10px;
     animation:fall linear infinite;
     opacity:0.8;
@@ -94,44 +93,6 @@ body{
 .heart:after{ left:0; transform:rotate(45deg); transform-origin:100% 100%; }
 @keyframes spin{from{transform:rotateY(0);} to{transform:rotateY(360deg);}}
 
-/* --- Cake --- */
-.cake{
-    margin:60px auto;
-    width:220px;
-    position:relative;
-}
-.layer{
-    height:70px;
-    background:linear-gradient(145deg,#ff8fab,#ff4d6d);
-    border-radius:20px;
-    margin-bottom:-25px;
-    box-shadow:0 15px 30px rgba(0,0,0,0.3);
-}
-.middle{width:190px;margin-left:15px;}
-.top{width:160px;margin-left:30px;}
-
-/* --- Candles --- */
-.candle{
-    width:18px;
-    height:60px;
-    background:linear-gradient(#fff,#ddd);
-    display:inline-block;
-    margin:5px;
-    position:relative;
-    border-radius:4px;
-}
-.flame{
-    width:16px;
-    height:24px;
-    background:radial-gradient(circle,#ffd166 20%,#ff9f1c 70%);
-    border-radius:50%;
-    position:absolute;
-    top:-24px;
-    left:1px;
-    animation:flicker 0.3s infinite alternate;
-}
-@keyframes flicker{from{transform:scale(1);} to{transform:scale(1.15);}}
-
 /* --- Typography --- */
 h1{
     font-family:'Playfair Display', serif;
@@ -188,6 +149,68 @@ button{
     transition:transform 0.5s ease;
 }
 .photo-container img:hover{transform:scale(1.05);}
+
+/* --- Cake Container --- */
+.cake{
+  margin:60px auto;
+  position:relative;
+  width:220px;
+  perspective:800px;
+}
+
+/* --- Cake Layers --- */
+.layer{
+  height:60px;
+  background:linear-gradient(145deg,#ff8fab,#ff4d6d);
+  border-radius:25px;
+  box-shadow:0 15px 30px rgba(0,0,0,0.4);
+  margin-bottom:-20px;
+  position:relative;
+}
+
+/* Tier sizes */
+.layer.base{width:220px;}
+.layer.middle{width:160px;margin:0 auto;}
+.layer.top{width:120px;margin:0 auto;}
+
+/* --- Candles Container --- */
+.candles{
+  position:absolute;
+  top:-40px;
+  left:50%;
+  transform:translateX(-50%);
+  display:flex;
+  gap:12px;
+}
+
+/* --- Candle Styling --- */
+.candle{
+  width:16px;
+  height:50px;
+  background:linear-gradient(#fff,#ddd);
+  border-radius:4px;
+  position:relative;
+}
+
+/* Candle Flame */
+.flame{
+  width:12px;
+  height:18px;
+  background:radial-gradient(circle,#ffd166 20%,#ff9f1c 70%);
+  border-radius:50%;
+  position:absolute;
+  top:-18px;
+  left:2px;
+  animation:flicker 0.25s infinite alternate;
+  box-shadow:0 0 10px #ffd166;
+}
+
+/* Flicker Animation */
+@keyframes flicker{
+  0%{transform:scale(1); opacity:1;}
+  50%{transform:scale(1.15) translateX(1px); opacity:0.9;}
+  100%{transform:scale(1) translateX(-1px); opacity:1;}
+}
 </style>
 </head>
 <body>
@@ -224,42 +247,44 @@ for(let i=0;i<50;i++){
 </div>
 
 <!-- Message -->
-<p>To: My Best Friend, My Love, My Dweeb, My Nerd, My 1 through 10, My Blossom ❤️</p>
+<p>To: My Best Friend, My Love, My Dweeb, My Nerd, My 1, My 2, My 3, My 4, My 5, My 6, My 6, My 7, My 8, My 9, My 10, My Blossom ❤️</p>
     
-<p>Happy 19th Birthday, my love.</p>
-<p>As it is written in Jeremiah 29:11: “For I know the plans I have for you,” declares the Lord, “plans to prosper you and not to harm you, plans to give you hope and a future.”</p>
+<p>Happy 19th Birthday, my love 💕.</p>
     
-<p>Today, I celebrate not just the day you were born, but the incredible woman you are becoming. I appreciate your growth, your knowledge, and your presence in my life.</p>
-<p>One of the first things that drew me to you was your wisdom; at 17, I could have easily believed you were 22, because of the depth in your words. Your intelligence challenges me and inspires me to be better.</p>
-<p>You are ambitious, determined, and beautiful inside and out. I could not be prouder of the future you are building and the way you see yourself. You are a powerful source of motivation in my life.</p>
+<p>As it is written in Jeremiah 29:11: “For I know the plans I have for you,” declares the Lord, “plans to prosper you and not to harm you, plans to give you hope and a future.”</p>  
+
+<p>Today, I celebrate not just the day you were born, but the incredible woman you are becoming. I appreciate your growth, your knowledge, and your presence in my life.</p>  
+
+<p>One of the first things that drew me to you was your wisdom; at 17, I could have easily believed you were 22, because of the depth in your words. Your intelligence challenges me and inspires me to be better.</p>  
+
+<p>You are ambitious, determined, and beautiful inside and out. I could not be prouder of the future you are building and the way you see yourself. You are a powerful source of motivation in my life.</p>  
+
+<p>And your beauty—oh, your beauty! Those alluring eyes, that perfect smile, the way you articulate your thoughts, your understanding beyond your years, your care, your spiritual depth. I love you so deeply that English sometimes falls short, and I'm forced to use my "nerdy languages.</p>  
+
+<p>Mathematically, you are an 11/10. Imagine a 30-question True/False test: the chance of getting every answer wrong is 1 in 1,073,741,824, about 0.000000093%. That’s how rare and extraordinary you are.</p>  
+
+<p>And if Economics is the study of value and scarcity, then by supply and demand, you are priceless. Scarcity increases value, and there has never been—and will never be—another you. You are a limited edition in a world of mass production.</p>  
     
-<p>And your beauty—oh, your beauty! Those alluring eyes, that perfect smile, the way you articulate your thoughts, your understanding beyond your years, your care, your spiritual depth. I love you so deeply that English sometimes falls short, and I'm forced to use my "nerdy languages.</p>
+<p>Leonardo da Vinci once said, “Simplicity is the ultimate sophistication.” That’s you: effortless, extraordinary, perfect in every detail.</p>  
+
+<p>In physics, imagination turns possibility into reality. I imagined you before I even knew you existed, imagined being with you, holding you, sharing a future together. And now, every glance, every smile, every thought of yours is like the perfect equation: precise, effortless, and breathtakingly beautiful.</p>  
     
-<p>Mathematically, you are an 11/10. Imagine a 30-question True/False test: the chance of getting every answer wrong is 1 in 1,073,741,824, about 0.000000093%. That’s how rare and extraordinary you are.</p>
-    
-<p>And if Economics is the study of value and scarcity, then by supply and demand, you are priceless. Scarcity increases value, and there has never been—and will never be—another you. You are a limited edition in a world of mass production.</p>
-    
-<p>Leonardo da Vinci once said, “Simplicity is the ultimate sophistication.” That’s you: effortless, extraordinary, perfect in every detail.</p>
-    
-<p>In physics, imagination turns possibility into reality. I imagined you before I even knew you existed, imagined being with you, holding you, sharing a future together. And now, every glance, every smile, every thought of yours is like the perfect equation: precise, effortless, and breathtakingly beautiful.</p>
-    
-<p>I cherish you beyond measure. I love you in ways English cannot fully express, in ways that mathematics, science, and all the languages in the world can only attempt to describe.</p>
-<p>Grow in grace, my friend, my best friend, my love, my Blossom. Happy Birthday, my Blossom ❤️</p>
+<p>I cherish you beyond measure. I love you in ways English cannot fully express, in ways that mathematics, science, and all the languages in the world can only attempt to describe.</p>  
+
+<p>Grow in grace, my friend, my best friend, my love, my Blossom. Happy Birthday, my Blossom ❤️</p>  
     
 <p>PS: I learnt coding because of you, my love 😂❤️</p>
-
-<!-- 3D Cake -->
+<!-- --- 3D Tiered Cake --- -->
 <div class="cake">
-    <div class="layer"></div>
-    <div class="layer middle"></div>
-    <div class="layer top"></div>
-</div>
-
-<!-- Candles -->
-<div>
+  <div class="layer base"></div>
+  <div class="layer middle"></div>
+  <div class="layer top"></div>
+  <div class="candles">
     <div class="candle"><div class="flame"></div></div>
     <div class="candle"><div class="flame"></div></div>
     <div class="candle"><div class="flame"></div></div>
+    <div class="candle"><div class="flame"></div></div>
+  </div>
 </div>
 
 <!-- Music Button -->
