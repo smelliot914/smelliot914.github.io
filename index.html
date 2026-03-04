@@ -34,15 +34,23 @@ body{
 
 /* --- Balloons --- */
 .balloon{
+
+
+/* Float animation */
+@keyframes float{
+    0%{transform:translateY(0);}
+    100%{transform:translateY(-130vh);}
+}
+<!-- Balloons -->
+<div class="balloon" style="left:5%; animation-duration:14s; background: #ff758f;"></div>
+<div class="balloon" style="left:15%; animation-duration:16s; background: #ff4d6d;"></div>.balloon{
     width:70px;
     height:90px;
     border-radius:50%;
     position:absolute;
     bottom:-120px;
     box-shadow:inset -10px -15px 25px rgba(0,0,0,0.3);
-    animation-name: float;
-    animation-iteration-count: infinite;
-    animation-timing-function: ease-in;
+    animation: float linear infinite;
     z-index:1000; /* always on top */
 }
 .balloon:after{
@@ -55,14 +63,12 @@ body{
     left:50%;
 }
 
-/* Float animation */
+/* Float animation with random speed via JS */
 @keyframes float{
-    0%{transform:translateY(0);}
-    100%{transform:translateY(-130vh);}
+    0%{transform:translateY(0) translateX(0);}
+    50%{transform:translateY(-65vh) translateX(10px);}
+    100%{transform:translateY(-130vh) translateX(-10px);}
 }
-<!-- Balloons -->
-<div class="balloon" style="left:5%; animation-duration:14s; background: #ff758f;"></div>
-<div class="balloon" style="left:15%; animation-duration:16s; background: #ff4d6d;"></div>
 <div class="balloon" style="left:25%; animation-duration:18s; background: #ffd166;"></div>
 <div class="balloon" style="left:35%; animation-duration:15s; background: #06d6a0;"></div>
 <div class="balloon" style="left:45%; animation-duration:17s; background: #118ab2;"></div>
