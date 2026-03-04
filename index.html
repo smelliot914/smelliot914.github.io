@@ -36,12 +36,14 @@ body{
 .balloon{
     width:70px;
     height:90px;
-    background:linear-gradient(145deg,#ff758f,#ff4d6d);
     border-radius:50%;
     position:absolute;
     bottom:-120px;
     box-shadow:inset -10px -15px 25px rgba(0,0,0,0.3);
-    animation:float 15s infinite ease-in;
+    animation-name: float;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in;
+    z-index:1000; /* always on top */
 }
 .balloon:after{
     content:"";
@@ -52,11 +54,23 @@ body{
     bottom:-50px;
     left:50%;
 }
-.balloon:nth-child(1){left:10%;}
-.balloon:nth-child(2){left:45%;animation-duration:18s;}
-.balloon:nth-child(3){left:80%;animation-duration:20s;}
+
+/* Float animation */
 @keyframes float{
-    to{transform:translateY(-130vh);}
+    0%{transform:translateY(0);}
+    100%{transform:translateY(-130vh);}
+}
+<!-- Balloons -->
+<div class="balloon" style="left:5%; animation-duration:14s; background: #ff758f;"></div>
+<div class="balloon" style="left:15%; animation-duration:16s; background: #ff4d6d;"></div>
+<div class="balloon" style="left:25%; animation-duration:18s; background: #ffd166;"></div>
+<div class="balloon" style="left:35%; animation-duration:15s; background: #06d6a0;"></div>
+<div class="balloon" style="left:45%; animation-duration:17s; background: #118ab2;"></div>
+<div class="balloon" style="left:55%; animation-duration:19s; background: #ff758f;"></div>
+<div class="balloon" style="left:65%; animation-duration:16s; background: #ff4d6d;"></div>
+<div class="balloon" style="left:75%; animation-duration:18s; background: #ffd166;"></div>
+<div class="balloon" style="left:85%; animation-duration:20s; background: #06d6a0;"></div>
+<div class="balloon" style="left:95%; animation-duration:15s; background: #118ab2;"></div>
 }
 
 /* --- Container --- */
