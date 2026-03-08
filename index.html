@@ -72,12 +72,18 @@ button{padding:14px 30px;background:#ff4d6d;border:none;color:white;border-radiu
 .layer.top{width:120px;margin:0 auto;}
 .candles{position:absolute;top:-40px;left:50%;transform:translateX(-50%);display:flex;gap:12px;z-index:2;}
 .candle{width:16px;height:50px;background:linear-gradient(#fff,#ddd);border-radius:4px;position:relative;box-shadow:0 3px 6px rgba(0,0,0,0.3);}
-.flame{width:12px;height:18px;background:radial-gradient(circle,#ffd166 20%,#ff9f1c 70%);border-radius:50%;position:absolute;top:-18px;left:2px;box-shadow:0 0 12px #ffd166,0 0 25px #ffd16688,0 0 40px #ff9f1c55;animation:flicker 0.25s infinite alternate;}
-.flame.out{opacity:0;transform:scale(0);transition:.5s;}
+.flame{
+  width:12px;height:18px;
+  background:radial-gradient(circle,#ffd166 20%,#ff9f1c 70%);
+  border-radius:50%;
+  position:absolute;top:-18px;left:2px;
+  box-shadow:0 0 12px #ffd166,0 0 25px #ffd16688,0 0 40px #ff9f1c55;
+  animation:flicker 0.25s infinite alternate;
+  opacity:1; /* Visible from start */
+}
 @keyframes flicker{0%{transform:scale(1) translateY(0);}50%{transform:scale(1.2) translateY(-2px);}100%{transform:scale(1) translateY(0);}}
 </style>
 </head>
-
 <body>
 
 <!-- Balloons -->
@@ -124,6 +130,7 @@ button{padding:14px 30px;background:#ff4d6d;border:none;color:white;border-radiu
 
 <p class="message">PS: I learnt coding because of you, and it was worth it! I almost cried typing this and I've edited this more than 20 times because there’s always something to say about you. It is endless 😂😭❤️</p>
 
+
 <!-- Cake -->
 <div class="cake">
   <div class="layer top"></div>
@@ -143,7 +150,7 @@ button{padding:14px 30px;background:#ff4d6d;border:none;color:white;border-radiu
 <audio id="bgMusic"><source src="song.mp3" type="audio/mpeg"></audio>
 
 <script>
-// CONFETTI
+// Confetti
 for(let i=0;i<50;i++){
   let c=document.createElement("div");
   c.className="confetti";
@@ -153,38 +160,19 @@ for(let i=0;i<50;i++){
   document.body.appendChild(c);
 }
 
-// SHOW MESSAGES
+// Sequential messages
 function showMessages(){
   const msgs=document.querySelectorAll(".message");
   msgs.forEach((m,i)=>{setTimeout(()=>{m.classList.add("show");}, i*1800);});
 }
 window.onload=showMessages;
 
-// MUSIC + HEART BEAT
+// Music + heart beat
 function playMusic(){
   document.getElementById("bgMusic").play();
   document.querySelector(".heart").classList.add("beat");
 }
-
-// CAKE FLAMES + CONFETTI BURST
-const cake=document.querySelector(".cake");
-const flames=document.querySelectorAll(".flame");
-const observer=new IntersectionObserver(entries=>{
-  if(entries[0].isIntersecting){
-    flames.forEach(f=>f.classList.add("out"));
-    for(let i=0;i<80;i++){
-      let c=document.createElement("div");
-      c.className="confetti";
-      c.style.left=Math.random()*100+"vw";
-      c.style.animationDuration=(Math.random()*2+1)+"s";
-      c.style.background=["#ff4d6d","#ffd166","#06d6a0","#118ab2"][Math.floor(Math.random()*4)];
-      document.body.appendChild(c);
-    }
-  }
-});
-observer.observe(cake);
 </script>
 
 </body>
 </html>
-
