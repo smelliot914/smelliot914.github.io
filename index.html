@@ -8,7 +8,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
-
 body{
 margin:0;
 font-family:'Poppins',sans-serif;
@@ -25,7 +24,6 @@ padding:60px 25px;
 }
 
 /* CONFETTI */
-
 .confetti{
 position:fixed;
 width:10px;
@@ -35,13 +33,11 @@ animation:fall linear infinite;
 opacity:.8;
 z-index:999;
 }
-
 @keyframes fall{
 to{transform:translateY(110vh) rotate(360deg);}
 }
 
 /* BALLOONS */
-
 .balloon{
 width:70px;
 height:90px;
@@ -52,7 +48,6 @@ box-shadow:inset -10px -15px 25px rgba(0,0,0,.3);
 animation:float linear infinite;
 z-index:1000;
 }
-
 .balloon:after{
 content:"";
 width:2px;
@@ -62,7 +57,6 @@ position:absolute;
 bottom:-50px;
 left:50%;
 }
-
 @keyframes float{
 0%{transform:translateY(0)}
 50%{transform:translateY(-65vh) translateX(10px)}
@@ -70,14 +64,12 @@ left:50%;
 }
 
 /* HEART */
-
 .heart{
 width:150px;
 height:150px;
 margin:40px auto;
 position:relative;
 }
-
 .heart:before,.heart:after{
 content:"";
 position:absolute;
@@ -86,13 +78,11 @@ height:120px;
 background:linear-gradient(145deg,#ff4d6d,#c9184a);
 border-radius:75px 75px 0 0;
 }
-
 .heart:before{
 left:75px;
 transform:rotate(-45deg);
 transform-origin:0 100%;
 }
-
 .heart:after{
 left:0;
 transform:rotate(45deg);
@@ -100,33 +90,28 @@ transform-origin:100% 100%;
 }
 
 /* HEART BEAT */
-
 .heart.beat{
 animation:heartbeat 1s infinite;
 }
-
 @keyframes heartbeat{
-0%{transform:scale(1)}
-25%{transform:scale(1.15)}
-40%{transform:scale(1)}
-60%{transform:scale(1.15)}
-100%{transform:scale(1)}
+0%{transform:scale(1);}
+25%{transform:scale(1.15);}
+40%{transform:scale(1);}
+60%{transform:scale(1.15);}
+100%{transform:scale(1);}
 }
 
 /* TEXT */
-
 h1{
 font-family:'Playfair Display',serif;
 font-size:34px;
 color:#ffe5ec;
 }
-
 #intro{
 font-size:20px;
 margin:40px 0;
 min-height:40px;
 }
-
 .message{
 opacity:0;
 transform:translateY(25px);
@@ -135,14 +120,12 @@ line-height:1.9;
 margin-bottom:28px;
 font-size:17px;
 }
-
 .message.show{
 opacity:1;
 transform:translateY(0);
 }
 
 /* BUTTON */
-
 button{
 padding:14px 30px;
 background:#ff4d6d;
@@ -154,42 +137,41 @@ cursor:pointer;
 margin-top:40px;
 }
 
-/* CAKE */
-
+/* 3D CAKE */
 .cake{
-margin:70px auto;
+margin:60px auto;
 position:relative;
 width:220px;
+perspective:800px;
 }
-
 .layer{
 height:60px;
 background:linear-gradient(145deg,#ff8fab,#ff4d6d);
 border-radius:25px;
+box-shadow:0 15px 30px rgba(0,0,0,0.4);
 margin-bottom:-20px;
+position:relative;
 }
-
-.layer.base{width:220px}
-.layer.middle{width:160px;margin:auto}
-.layer.top{width:120px;margin:auto}
-
+.layer.base{width:220px;}
+.layer.middle{width:160px;margin:0 auto;}
+.layer.top{width:120px;margin:0 auto;}
 .candles{
 position:absolute;
 top:-40px;
 left:50%;
 transform:translateX(-50%);
 display:flex;
-gap:10px;
+gap:12px;
+z-index:2;
 }
-
 .candle{
 width:16px;
 height:50px;
 background:linear-gradient(#fff,#ddd);
 border-radius:4px;
 position:relative;
+box-shadow:0 3px 6px rgba(0,0,0,0.3);
 }
-
 .flame{
 width:12px;
 height:18px;
@@ -199,14 +181,13 @@ position:absolute;
 top:-18px;
 left:2px;
 animation:flicker .25s infinite alternate;
+box-shadow:0 0 10px #ffd166;
 }
-
 .flame.out{
 opacity:0;
 transform:scale(0);
 transition:.5s;
 }
-
 @keyframes flicker{
 0%{transform:scale(1)}
 50%{transform:scale(1.15)}
@@ -219,7 +200,6 @@ transition:.5s;
 <body>
 
 <!-- BALLOONS -->
-
 <div class="balloon" style="left:10%;animation-duration:15s;background:#ff758f"></div>
 <div class="balloon" style="left:30%;animation-duration:18s;background:#ffd166"></div>
 <div class="balloon" style="left:50%;animation-duration:16s;background:#06d6a0"></div>
@@ -228,9 +208,7 @@ transition:.5s;
 <div class="container">
 
 <h1>Happy 19th Birthday, My Blossom ❤️</h1>
-
 <div id="intro"></div>
-
 <div class="heart"></div>
 
 <p class="message">To: My Best Friend💞, My Love❣️, My Dweeb🫠, My Nerd🤓, My 1️⃣, My 2️⃣, My 3️⃣, My 4️⃣, My 5️⃣, My 6️⃣, My 7️⃣, My 8️⃣, My 9️⃣, My 🔟, My Blossom ❤️</p>
@@ -257,19 +235,17 @@ transition:.5s;
 
 <p class="message">PS: I learnt coding because of you and it was worth it ❤️</p>
 
+<!-- 3D Cake -->
 <div class="cake">
-
 <div class="layer top"></div>
 <div class="layer middle"></div>
 <div class="layer base"></div>
-
 <div class="candles">
 <div class="candle"><div class="flame"></div></div>
 <div class="candle"><div class="flame"></div></div>
 <div class="candle"><div class="flame"></div></div>
 <div class="candle"><div class="flame"></div></div>
 </div>
-
 </div>
 
 <button onclick="playMusic()">Tap to Play Our Song 🎵</button>
@@ -281,9 +257,7 @@ transition:.5s;
 </audio>
 
 <script>
-
-/* CONFETTI */
-
+// CONFETTI
 for(let i=0;i<50;i++){
 let c=document.createElement("div");
 c.className="confetti";
@@ -293,11 +267,9 @@ c.style.background=["#ff4d6d","#ffd166","#06d6a0","#118ab2"][Math.floor(Math.ran
 document.body.appendChild(c);
 }
 
-/* TYPEWRITER INTRO */
-
+// TYPEWRITER INTRO
 const text="A little birthday letter for the most wonderful girl in my life...";
 let i=0;
-
 function typeWriter(){
 if(i<text.length){
 document.getElementById("intro").innerHTML+=text.charAt(i);
@@ -307,14 +279,11 @@ setTimeout(typeWriter,40);
 showMessages();
 }
 }
-
 typeWriter();
 
-/* SHOW PARAGRAPHS */
-
+// SHOW MESSAGES
 function showMessages(){
 const msgs=document.querySelectorAll(".message");
-
 msgs.forEach((m,index)=>{
 setTimeout(()=>{
 m.classList.add("show");
@@ -322,58 +291,35 @@ m.classList.add("show");
 });
 }
 
-/* MUSIC + HEART BEAT */
-
+// MUSIC + HEART BEAT
 function playMusic(){
-
 document.getElementById("bgMusic").play();
-
 document.querySelector(".heart").classList.add("beat");
-
 }
 
-/* CAKE EVENT */
-
+// CAKE EVENT
 const cake=document.querySelector(".cake");
 const flames=document.querySelectorAll(".flame");
-
 const observer=new IntersectionObserver(entries=>{
 if(entries[0].isIntersecting){
-
-flames.forEach(f=>{
-f.classList.add("out");
-});
-
+flames.forEach(f=>{f.classList.add("out");});
 burst();
-
 }
 });
-
 observer.observe(cake);
 
-/* CONFETTI BURST */
-
+// CONFETTI BURST
 function burst(){
-
 for(let i=0;i<80;i++){
-
 let conf=document.createElement("div");
-
 conf.className="confetti";
-
 conf.style.left=Math.random()*100+"vw";
-
 conf.style.animationDuration=(Math.random()*2+1)+"s";
-
 conf.style.background=["#ff4d6d","#ffd166","#06d6a0","#118ab2"][Math.floor(Math.random()*4)];
-
 document.body.appendChild(conf);
-
 }
-
 }
-
 </script>
 
 </body>
-</html>
+  </html>
