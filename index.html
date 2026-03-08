@@ -3,326 +3,354 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Happy Birthday My Blossom ❤️</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
-/* --- Body & Background --- */
+
 body{
-    margin:0;
-    font-family:'Poppins', sans-serif;
-    background: radial-gradient(circle at top, #ffccd5, #b5179e, #240046);
-    color:white;
-    text-align:center;
-    overflow-x:hidden;
+margin:0;
+font-family:'Poppins', sans-serif;
+background: radial-gradient(circle at top,#ffccd5,#b5179e,#240046);
+color:white;
+text-align:center;
+overflow-x:hidden;
 }
 
-/* --- Confetti --- */
-.confetti{
-    position:fixed;
-    width:10px;
-    height:10px;
-    top:-10px;
-    animation:fall linear infinite;
-    opacity:0.8;
-    z-index: 999;
-}
-@keyframes fall{
-    to{transform:translateY(110vh) rotate(360deg);}
-}
-
-/* --- Balloons --- */
-.balloon{
-
-
-/* Float animation */
-@keyframes float{
-    0%{transform:translateY(0);}
-    100%{transform:translateY(-130vh);}
-}
-<!-- Balloons -->
-<div class="balloon" style="left:5%; animation-duration:14s; background: #ff758f;"></div>
-<div class="balloon" style="left:15%; animation-duration:16s; background: #ff4d6d;"></div>.balloon{
-    width:70px;
-    height:90px;
-    border-radius:50%;
-    position:absolute;
-    bottom:-120px;
-    box-shadow:inset -10px -15px 25px rgba(0,0,0,0.3);
-    animation: float linear infinite;
-    z-index:1000; /* always on top */
-}
-.balloon:after{
-    content:"";
-    width:2px;
-    height:50px;
-    background:white;
-    position:absolute;
-    bottom:-50px;
-    left:50%;
-}
-
-/* Float animation with random speed via JS */
-@keyframes float{
-    0%{transform:translateY(0) translateX(0);}
-    50%{transform:translateY(-65vh) translateX(10px);}
-    100%{transform:translateY(-130vh) translateX(-10px);}
-}
-<div class="balloon" style="left:25%; animation-duration:18s; background: #ffd166;"></div>
-<div class="balloon" style="left:35%; animation-duration:15s; background: #06d6a0;"></div>
-<div class="balloon" style="left:45%; animation-duration:17s; background: #118ab2;"></div>
-<div class="balloon" style="left:55%; animation-duration:19s; background: #ff758f;"></div>
-<div class="balloon" style="left:65%; animation-duration:16s; background: #ff4d6d;"></div>
-<div class="balloon" style="left:75%; animation-duration:18s; background: #ffd166;"></div>
-<div class="balloon" style="left:85%; animation-duration:20s; background: #06d6a0;"></div>
-<div class="balloon" style="left:95%; animation-duration:15s; background: #118ab2;"></div>
-}
-
-/* --- Container --- */
 .container{
-    max-width:800px;
-    margin:auto;
-    padding:60px 25px;
+max-width:800px;
+margin:auto;
+padding:60px 25px;
 }
 
-/* --- Heart --- */
+/* CONFETTI */
+
+.confetti{
+position:fixed;
+width:10px;
+height:10px;
+top:-10px;
+animation:fall linear infinite;
+opacity:0.8;
+z-index:999;
+}
+
+@keyframes fall{
+to{transform:translateY(110vh) rotate(360deg);}
+}
+
+/* BALLOONS */
+
+.balloon{
+width:70px;
+height:90px;
+border-radius:50%;
+position:fixed;
+bottom:-120px;
+box-shadow:inset -10px -15px 25px rgba(0,0,0,0.3);
+animation: float linear infinite;
+z-index:1000;
+}
+
+.balloon:after{
+content:"";
+width:2px;
+height:50px;
+background:white;
+position:absolute;
+bottom:-50px;
+left:50%;
+}
+
+@keyframes float{
+0%{transform:translateY(0);}
+50%{transform:translateY(-65vh) translateX(10px);}
+100%{transform:translateY(-130vh) translateX(-10px);}
+}
+
+/* HEART */
+
 .heart-container{
-    perspective:1000px;
-    margin:40px auto;
+perspective:1000px;
+margin:40px auto;
 }
+
 .heart{
-    width:150px;
-    height:150px;
-    margin:auto;
-    position:relative;
-    transform-style:preserve-3d;
-    animation:spin 8s linear infinite;
+width:150px;
+height:150px;
+margin:auto;
+position:relative;
+transform-style:preserve-3d;
+animation:spin 8s linear infinite;
 }
+
 .heart:before,
 .heart:after{
-    content:"";
-    position:absolute;
-    width:75px;
-    height:120px;
-    background:linear-gradient(145deg,#ff4d6d,#c9184a);
-    border-radius:75px 75px 0 0;
-    box-shadow:0 20px 40px rgba(0,0,0,0.4);
+content:"";
+position:absolute;
+width:75px;
+height:120px;
+background:linear-gradient(145deg,#ff4d6d,#c9184a);
+border-radius:75px 75px 0 0;
+box-shadow:0 20px 40px rgba(0,0,0,0.4);
 }
-.heart:before{ left:75px; transform:rotate(-45deg); transform-origin:0 100%; }
-.heart:after{ left:0; transform:rotate(45deg); transform-origin:100% 100%; }
-@keyframes spin{from{transform:rotateY(0);} to{transform:rotateY(360deg);}}
 
-/* --- Typography --- */
+.heart:before{
+left:75px;
+transform:rotate(-45deg);
+transform-origin:0 100%;
+}
+
+.heart:after{
+left:0;
+transform:rotate(45deg);
+transform-origin:100% 100%;
+}
+
+@keyframes spin{
+from{transform:rotateY(0);}
+to{transform:rotateY(360deg);}
+}
+
+/* TYPOGRAPHY */
+
 h1{
-    font-family:'Playfair Display', serif;
-    font-size:34px;
-    color:#ffe5ec;
-    margin-bottom:30px;
-}
-p{
-    line-height:1.9;
-    margin-bottom:30px;
-    font-size:17px;
-    opacity:0;
-    transform:translateY(20px);
-    animation:fadeUp 1s forwards;
-}
-@keyframes fadeUp{
-    to{opacity:1; transform:translateY(0);}
+font-family:'Playfair Display', serif;
+font-size:34px;
+color:#ffe5ec;
+margin-bottom:30px;
 }
 
-/* --- Paragraph Delays --- */
-p:nth-of-type(1){animation-delay:0.5s;}
-p:nth-of-type(2){animation-delay:1s;}
-p:nth-of-type(3){animation-delay:1.5s;}
-p:nth-of-type(4){animation-delay:2s;}
-p:nth-of-type(5){animation-delay:2.5s;}
-p:nth-of-type(6){animation-delay:3s;}
-p:nth-of-type(7){animation-delay:3.5s;}
-p:nth-of-type(8){animation-delay:4s;}
-p:nth-of-type(9){animation-delay:4.5s;}
-p:nth-of-type(10){animation-delay:5s;}
+/* TYPEWRITER INTRO */
 
-/* --- Buttons --- */
+#intro{
+font-size:20px;
+margin-bottom:40px;
+min-height:40px;
+}
+
+/* MESSAGE ANIMATION */
+
+.message{
+opacity:0;
+transform:translateY(25px);
+transition:all 1s ease;
+line-height:1.9;
+margin-bottom:30px;
+font-size:17px;
+}
+
+.message.show{
+opacity:1;
+transform:translateY(0);
+}
+
+/* BUTTON */
+
 button{
-    padding:14px 30px;
-    background:#ff4d6d;
-    border:none;
-    color:white;
-    border-radius:30px;
-    font-size:16px;
-    cursor:pointer;
-    margin-top:40px;
-    box-shadow:0 10px 20px rgba(0,0,0,0.3);
+padding:14px 30px;
+background:#ff4d6d;
+border:none;
+color:white;
+border-radius:30px;
+font-size:16px;
+cursor:pointer;
+margin-top:40px;
+box-shadow:0 10px 20px rgba(0,0,0,0.3);
 }
 
-/* --- Photo --- */
-.photo-container{
-    margin:40px 0;
-    perspective:800px;
-}
+/* PHOTO */
+
 .photo-container img{
-    width:220px;
-    border-radius:20px;
-    box-shadow:0 20px 40px rgba(0,0,0,0.4);
-    transition:transform 0.5s ease;
+width:220px;
+border-radius:20px;
+box-shadow:0 20px 40px rgba(0,0,0,0.4);
+transition:transform .5s;
 }
-.photo-container img:hover{transform:scale(1.05);}
 
-/* --- Cake Container --- */
+.photo-container img:hover{
+transform:scale(1.05);
+}
+
+/* CAKE */
+
 .cake{
-  margin:60px auto;
-  position:relative;
-  width:220px;
-  perspective:800px;
+margin:60px auto;
+position:relative;
+width:220px;
 }
 
-/* --- Cake Layers --- */
 .layer{
-  height:60px;
-  background:linear-gradient(145deg,#ff8fab,#ff4d6d);
-  border-radius:25px;
-  box-shadow:0 15px 30px rgba(0,0,0,0.4);
-  margin-bottom:-20px;
-  position:relative;
+height:60px;
+background:linear-gradient(145deg,#ff8fab,#ff4d6d);
+border-radius:25px;
+box-shadow:0 15px 30px rgba(0,0,0,0.4);
+margin-bottom:-20px;
 }
 
-/* Tier sizes */
 .layer.base{width:220px;}
-.layer.middle{width:160px;margin:0 auto;}
-.layer.top{width:120px;margin:0 auto;}
+.layer.middle{width:160px;margin:auto;}
+.layer.top{width:120px;margin:auto;}
 
-/* --- Candles Container --- */
 .candles{
-  position:absolute;
-  top:-40px;
-  left:50%;
-  transform:translateX(-50%);
-  display:flex;
-  gap:12px;
+position:absolute;
+top:-40px;
+left:50%;
+transform:translateX(-50%);
+display:flex;
+gap:12px;
 }
 
-/* --- Candle Styling --- */
 .candle{
-  width:16px;
-  height:50px;
-  background:linear-gradient(#fff,#ddd);
-  border-radius:4px;
-  position:relative;
+width:16px;
+height:50px;
+background:linear-gradient(#fff,#ddd);
+border-radius:4px;
+position:relative;
 }
 
-/* Candle Flame */
 .flame{
-  width:12px;
-  height:18px;
-  background:radial-gradient(circle,#ffd166 20%,#ff9f1c 70%);
-  border-radius:50%;
-  position:absolute;
-  top:-18px;
-  left:2px;
-  animation:flicker 0.25s infinite alternate;
-  box-shadow:0 0 10px #ffd166;
+width:12px;
+height:18px;
+background:radial-gradient(circle,#ffd166 20%,#ff9f1c 70%);
+border-radius:50%;
+position:absolute;
+top:-18px;
+left:2px;
+animation:flicker .25s infinite alternate;
+box-shadow:0 0 10px #ffd166;
 }
 
-/* Flicker Animation */
 @keyframes flicker{
-  0%{transform:scale(1); opacity:1;}
-  50%{transform:scale(1.15) translateX(1px); opacity:0.9;}
-  100%{transform:scale(1) translateX(-1px); opacity:1;}
+0%{transform:scale(1);}
+50%{transform:scale(1.15);}
+100%{transform:scale(1);}
 }
+
 </style>
 </head>
+
 <body>
 
-<!-- CONFETTI GENERATOR -->
-<script>
-for(let i=0;i<50;i++){
-    let conf=document.createElement("div");
-    conf.className="confetti";
-    conf.style.left=Math.random()*100+"vw";
-    conf.style.animationDuration=(Math.random()*3+2)+"s";
-    conf.style.background=["#ff4d6d","#ffd166","#06d6a0","#118ab2"][Math.floor(Math.random()*4)];
-    document.body.appendChild(conf);
-}
-</script>
+<!-- BALLOONS -->
 
-<!-- Balloons -->
-<div class="balloon"></div>
-<div class="balloon"></div>
-<div class="balloon"></div>
+<div class="balloon" style="left:10%; animation-duration:15s; background:#ff758f;"></div>
+<div class="balloon" style="left:30%; animation-duration:18s; background:#ffd166;"></div>
+<div class="balloon" style="left:50%; animation-duration:16s; background:#06d6a0;"></div>
+<div class="balloon" style="left:70%; animation-duration:20s; background:#118ab2;"></div>
+<div class="balloon" style="left:85%; animation-duration:17s; background:#ff4d6d;"></div>
 
 <div class="container">
 
 <h1>Happy 19th Birthday, My Blossom ❤️</h1>
 
-<!-- 3D Heart -->
+<div id="intro"></div>
+
 <div class="heart-container">
-    <div class="heart"></div>
+<div class="heart"></div>
 </div>
 
-<!-- Her Picture (Optional) -->
 <div class="photo-container">
-    <img src="her.jpg" alt="My Blossom">
+<img src="her.jpg" alt="My Blossom">
 </div>
 
-<!-- Message -->
-<p>To: My Best Friend💞, My Love❣️, My Dweeb🫠, My Nerd🤓, My 1️⃣, My 2️⃣, My 3️⃣, My 4️⃣, My 5️⃣, My 6️⃣, My 7️⃣, My 8️⃣, My 9️⃣, My 🔟, My Blossom ❤️</p>
-    
-<p>Happy 19th Birthday, my love 💕.</p>
-    
-<p>Today, I celebrate not just the day you were born, but the incredible woman you are becoming. Every year you grow wiser, stronger, and more beautiful in ways that go far beyond appearances.</p>
+<p class="message">To: My Best Friend💞, My Love❣️, My Dweeb🫠, My Nerd🤓, My 1️⃣, My 2️⃣, My 3️⃣, My 4️⃣, My 5️⃣, My 6️⃣, My 7️⃣, My 8️⃣, My 9️⃣, My 🔟, My Blossom ❤️</p>
 
-</p>"I’ve always thought attraction is more than just looks, it’s about the person themselves. And you, you are the perfect example. Your character, behaviour, flaws, and everything about you are incredibly attractive. You don’t sound unrefined or unintelligent; instead, there’s a depth and understanding in you beyond your age that fascinates me. People like you are rare. And of course… you’re very pretty too, with your charmingly dweebish glasses" those were the words i used to confess how i felt about you indirectly, when i said it to Brendan, and i say them again, but this time, to you, and i mean every single word. I love you so much blossom, more than i can describe, and the day we started talking to each other, I wondered if the stars looked at us and thought,
-<i>"they finally met."</i></p>
-<p>And perhaps they were right. Because from that moment, something about you felt rare and meaningful, like meeting someone you were somehow always meant to know, and the way i look forward to your texts, replies, calls, daily updates, you'd be surprised</p>
-    
-<p>As it is written in Jeremiah 29:11:<br>
-“For I know the plans I have for you,” declares the Lord,
-“plans to prosper you and not to harm you, plans to give you hope and a future.”</p>
-<p>When I look at you, your ambition, your mind, your kindness, I truly believe you are walking
-toward something extraordinary.</p>
-<p>You are ambitious, determined, and beautiful inside and out. I could not be prouder of the future you are building and the way you see yourself. You are a powerful source of motivation in my life.</p>  
-<p>And your beauty—oh, your beauty! Those alluring eyes, that perfect smile, the way you articulate your thoughts, your understanding beyond your years, your care, your spiritual depth. I love you so deeply that English sometimes falls short, and I'm forced to use my "nerdy languages😂"</p>  
+<p class="message">Happy 19th Birthday, my love 💕.</p>
 
-<p>Mathematically, you are an 11/10. Imagine a 30-question True/False test: the chance of getting every answer wrong is 1 in 1,073,741,824, about 0.000000093%. That’s how rare and extraordinary you are.</p>  
+<p class="message">Today, I celebrate not just the day you were born, but the incredible woman you are becoming. Every year you grow wiser, stronger, and more beautiful in ways that go far beyond appearances.</p>
 
-<p>And if Economics is the study of value and scarcity, then by supply and demand, you are priceless. Scarcity increases value, and there has never been—and will never be—another you. You are a limited edition in a world of mass production.</p>  
-    
-<p>Leonardo da Vinci once said, “Simplicity is the ultimate sophistication.” That’s you: effortless, extraordinary, perfect in every detail.</p>  
+<p class="message">I’ve always thought attraction is more than just looks, it’s about the person themselves. And you, you are the perfect example. Your character, behaviour, flaws, and everything about you are incredibly attractive. People like you are rare.</p>
 
-<p>In physics, imagination turns possibility into reality. I imagined you before I even knew you existed, imagined being with you, holding you, sharing a future together. And now, every glance, every smile, every thought of yours is like the perfect equation: precise, effortless, and breathtakingly beautiful.</p> 
+<p class="message">From the day we started talking, something about you felt rare and meaningful. I wondered if the stars looked at us and thought, <i>"they finally met."</i></p>
 
-<p>I cherish you beyond measure. I love you in ways English cannot fully express, in ways that mathematics, science, and all the languages in the world can only attempt to describe.</p>  
-<p>Grow in grace, my friend, my best friend, my love. Happy Birthday once again!</p>  
-<p>PS: I learnt coding because of you, and it was worth it! and i almost cried typing this and I've edited this more than 20 times, because there's always something to say about you, it is endless 😂😭❤️</p>
-<!-- --- 3D Tiered Cake --- -->
+<p class="message">As it is written in Jeremiah 29:11: “For I know the plans I have for you,” declares the Lord.</p>
+
+<p class="message">You are ambitious, determined, and beautiful inside and out.</p>
+
+<p class="message">Mathematically, you are an 11/10.</p>
+
+<p class="message">Economically, you are priceless.</p>
+
+<p class="message">Leonardo da Vinci once said, “Simplicity is the ultimate sophistication.” That’s you.</p>
+
+<p class="message">I cherish you beyond measure. Happy Birthday once again.</p>
+
+<p class="message">PS: I learnt coding because of you, and it was worth it ❤️</p>
+
 <div class="cake">
-  <div class="layer top"></div>
-  <div class="layer middle"></div>
-  <div class="layer base"></div>
-  <div class="candles">
-    <div class="candle"><div class="flame"></div></div>
-    <div class="candle"><div class="flame"></div></div>
-    <div class="candle"><div class="flame"></div></div>
-    <div class="candle"><div class="flame"></div></div>
-  </div>
+<div class="layer top"></div>
+<div class="layer middle"></div>
+<div class="layer base"></div>
+
+<div class="candles">
+<div class="candle"><div class="flame"></div></div>
+<div class="candle"><div class="flame"></div></div>
+<div class="candle"><div class="flame"></div></div>
+<div class="candle"><div class="flame"></div></div>
+</div>
 </div>
 
-<!-- Music Button -->
 <button onclick="playMusic()">Tap to Play Our Song 🎵</button>
 
 </div>
 
-<!-- Music -->
 <audio id="bgMusic">
 <source src="song.mp3" type="audio/mpeg">
 </audio>
 
 <script>
-function playMusic(){
-    document.getElementById("bgMusic").play();
+
+/* CONFETTI */
+
+for(let i=0;i<50;i++){
+let conf=document.createElement("div");
+conf.className="confetti";
+conf.style.left=Math.random()*100+"vw";
+conf.style.animationDuration=(Math.random()*3+2)+"s";
+conf.style.background=["#ff4d6d","#ffd166","#06d6a0","#118ab2"][Math.floor(Math.random()*4)];
+document.body.appendChild(conf);
 }
+
+/* TYPEWRITER INTRO */
+
+const text="A little birthday letter for the most wonderful girl in my life...";
+let i=0;
+
+function typeWriter(){
+if(i<text.length){
+document.getElementById("intro").innerHTML+=text.charAt(i);
+i++;
+setTimeout(typeWriter,40);
+}else{
+showMessages();
+}
+}
+
+typeWriter();
+
+/* SHOW PARAGRAPHS ONE BY ONE */
+
+function showMessages(){
+
+const messages=document.querySelectorAll(".message");
+
+messages.forEach((p,index)=>{
+setTimeout(()=>{
+p.classList.add("show");
+},index*1800);
+});
+
+}
+
+/* MUSIC */
+
+function playMusic(){
+document.getElementById("bgMusic").play();
+}
+
 </script>
 
 </body>
