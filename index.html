@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Happy Birthday My Blossom ❤️</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
@@ -12,8 +11,8 @@
 
 body{
 margin:0;
-font-family:'Poppins', sans-serif;
-background: radial-gradient(circle at top,#ffccd5,#b5179e,#240046);
+font-family:'Poppins',sans-serif;
+background:radial-gradient(circle at top,#ffccd5,#b5179e,#240046);
 color:white;
 text-align:center;
 overflow-x:hidden;
@@ -33,7 +32,7 @@ width:10px;
 height:10px;
 top:-10px;
 animation:fall linear infinite;
-opacity:0.8;
+opacity:.8;
 z-index:999;
 }
 
@@ -49,8 +48,8 @@ height:90px;
 border-radius:50%;
 position:fixed;
 bottom:-120px;
-box-shadow:inset -10px -15px 25px rgba(0,0,0,0.3);
-animation: float linear infinite;
+box-shadow:inset -10px -15px 25px rgba(0,0,0,.3);
+animation:float linear infinite;
 z-index:1000;
 }
 
@@ -65,36 +64,27 @@ left:50%;
 }
 
 @keyframes float{
-0%{transform:translateY(0);}
-50%{transform:translateY(-65vh) translateX(10px);}
-100%{transform:translateY(-130vh) translateX(-10px);}
+0%{transform:translateY(0)}
+50%{transform:translateY(-65vh) translateX(10px)}
+100%{transform:translateY(-130vh) translateX(-10px)}
 }
 
 /* HEART */
 
-.heart-container{
-perspective:1000px;
-margin:40px auto;
-}
-
 .heart{
 width:150px;
 height:150px;
-margin:auto;
+margin:40px auto;
 position:relative;
-transform-style:preserve-3d;
-animation:spin 8s linear infinite;
 }
 
-.heart:before,
-.heart:after{
+.heart:before,.heart:after{
 content:"";
 position:absolute;
 width:75px;
 height:120px;
 background:linear-gradient(145deg,#ff4d6d,#c9184a);
 border-radius:75px 75px 0 0;
-box-shadow:0 20px 40px rgba(0,0,0,0.4);
 }
 
 .heart:before{
@@ -109,36 +99,40 @@ transform:rotate(45deg);
 transform-origin:100% 100%;
 }
 
-@keyframes spin{
-from{transform:rotateY(0);}
-to{transform:rotateY(360deg);}
+/* HEART BEAT */
+
+.heart.beat{
+animation:heartbeat 1s infinite;
 }
 
-/* TYPOGRAPHY */
+@keyframes heartbeat{
+0%{transform:scale(1)}
+25%{transform:scale(1.15)}
+40%{transform:scale(1)}
+60%{transform:scale(1.15)}
+100%{transform:scale(1)}
+}
+
+/* TEXT */
 
 h1{
-font-family:'Playfair Display', serif;
+font-family:'Playfair Display',serif;
 font-size:34px;
 color:#ffe5ec;
-margin-bottom:30px;
 }
-
-/* TYPEWRITER INTRO */
 
 #intro{
 font-size:20px;
-margin-bottom:40px;
+margin:40px 0;
 min-height:40px;
 }
-
-/* MESSAGE ANIMATION */
 
 .message{
 opacity:0;
 transform:translateY(25px);
-transition:all 1s ease;
+transition:1s;
 line-height:1.9;
-margin-bottom:30px;
+margin-bottom:28px;
 font-size:17px;
 }
 
@@ -158,26 +152,12 @@ border-radius:30px;
 font-size:16px;
 cursor:pointer;
 margin-top:40px;
-box-shadow:0 10px 20px rgba(0,0,0,0.3);
-}
-
-/* PHOTO */
-
-.photo-container img{
-width:220px;
-border-radius:20px;
-box-shadow:0 20px 40px rgba(0,0,0,0.4);
-transition:transform .5s;
-}
-
-.photo-container img:hover{
-transform:scale(1.05);
 }
 
 /* CAKE */
 
 .cake{
-margin:60px auto;
+margin:70px auto;
 position:relative;
 width:220px;
 }
@@ -186,13 +166,12 @@ width:220px;
 height:60px;
 background:linear-gradient(145deg,#ff8fab,#ff4d6d);
 border-radius:25px;
-box-shadow:0 15px 30px rgba(0,0,0,0.4);
 margin-bottom:-20px;
 }
 
-.layer.base{width:220px;}
-.layer.middle{width:160px;margin:auto;}
-.layer.top{width:120px;margin:auto;}
+.layer.base{width:220px}
+.layer.middle{width:160px;margin:auto}
+.layer.top{width:120px;margin:auto}
 
 .candles{
 position:absolute;
@@ -200,7 +179,7 @@ top:-40px;
 left:50%;
 transform:translateX(-50%);
 display:flex;
-gap:12px;
+gap:10px;
 }
 
 .candle{
@@ -220,13 +199,18 @@ position:absolute;
 top:-18px;
 left:2px;
 animation:flicker .25s infinite alternate;
-box-shadow:0 0 10px #ffd166;
+}
+
+.flame.out{
+opacity:0;
+transform:scale(0);
+transition:.5s;
 }
 
 @keyframes flicker{
-0%{transform:scale(1);}
-50%{transform:scale(1.15);}
-100%{transform:scale(1);}
+0%{transform:scale(1)}
+50%{transform:scale(1.15)}
+100%{transform:scale(1)}
 }
 
 </style>
@@ -236,11 +220,10 @@ box-shadow:0 0 10px #ffd166;
 
 <!-- BALLOONS -->
 
-<div class="balloon" style="left:10%; animation-duration:15s; background:#ff758f;"></div>
-<div class="balloon" style="left:30%; animation-duration:18s; background:#ffd166;"></div>
-<div class="balloon" style="left:50%; animation-duration:16s; background:#06d6a0;"></div>
-<div class="balloon" style="left:70%; animation-duration:20s; background:#118ab2;"></div>
-<div class="balloon" style="left:85%; animation-duration:17s; background:#ff4d6d;"></div>
+<div class="balloon" style="left:10%;animation-duration:15s;background:#ff758f"></div>
+<div class="balloon" style="left:30%;animation-duration:18s;background:#ffd166"></div>
+<div class="balloon" style="left:50%;animation-duration:16s;background:#06d6a0"></div>
+<div class="balloon" style="left:70%;animation-duration:20s;background:#118ab2"></div>
 
 <div class="container">
 
@@ -248,23 +231,17 @@ box-shadow:0 0 10px #ffd166;
 
 <div id="intro"></div>
 
-<div class="heart-container">
 <div class="heart"></div>
-</div>
-
-<div class="photo-container">
-<img src="her.jpg" alt="My Blossom">
-</div>
 
 <p class="message">To: My Best Friend💞, My Love❣️, My Dweeb🫠, My Nerd🤓, My 1️⃣, My 2️⃣, My 3️⃣, My 4️⃣, My 5️⃣, My 6️⃣, My 7️⃣, My 8️⃣, My 9️⃣, My 🔟, My Blossom ❤️</p>
 
 <p class="message">Happy 19th Birthday, my love 💕.</p>
 
-<p class="message">Today, I celebrate not just the day you were born, but the incredible woman you are becoming. Every year you grow wiser, stronger, and more beautiful in ways that go far beyond appearances.</p>
+<p class="message">Today, I celebrate not just the day you were born, but the incredible woman you are becoming.</p>
 
-<p class="message">I’ve always thought attraction is more than just looks, it’s about the person themselves. And you, you are the perfect example. Your character, behaviour, flaws, and everything about you are incredibly attractive. People like you are rare.</p>
+<p class="message">I’ve always thought attraction is more than just looks, it’s about the person themselves. And you are the perfect example.</p>
 
-<p class="message">From the day we started talking, something about you felt rare and meaningful. I wondered if the stars looked at us and thought, <i>"they finally met."</i></p>
+<p class="message">From the day we started talking, something about you felt rare and meaningful.</p>
 
 <p class="message">As it is written in Jeremiah 29:11: “For I know the plans I have for you,” declares the Lord.</p>
 
@@ -276,11 +253,12 @@ box-shadow:0 0 10px #ffd166;
 
 <p class="message">Leonardo da Vinci once said, “Simplicity is the ultimate sophistication.” That’s you.</p>
 
-<p class="message">I cherish you beyond measure. Happy Birthday once again.</p>
+<p class="message">I cherish you beyond measure. Happy Birthday once again!</p>
 
-<p class="message">PS: I learnt coding because of you, and it was worth it ❤️</p>
+<p class="message">PS: I learnt coding because of you and it was worth it ❤️</p>
 
 <div class="cake">
+
 <div class="layer top"></div>
 <div class="layer middle"></div>
 <div class="layer base"></div>
@@ -291,6 +269,7 @@ box-shadow:0 0 10px #ffd166;
 <div class="candle"><div class="flame"></div></div>
 <div class="candle"><div class="flame"></div></div>
 </div>
+
 </div>
 
 <button onclick="playMusic()">Tap to Play Our Song 🎵</button>
@@ -306,12 +285,12 @@ box-shadow:0 0 10px #ffd166;
 /* CONFETTI */
 
 for(let i=0;i<50;i++){
-let conf=document.createElement("div");
-conf.className="confetti";
-conf.style.left=Math.random()*100+"vw";
-conf.style.animationDuration=(Math.random()*3+2)+"s";
-conf.style.background=["#ff4d6d","#ffd166","#06d6a0","#118ab2"][Math.floor(Math.random()*4)];
-document.body.appendChild(conf);
+let c=document.createElement("div");
+c.className="confetti";
+c.style.left=Math.random()*100+"vw";
+c.style.animationDuration=(Math.random()*3+2)+"s";
+c.style.background=["#ff4d6d","#ffd166","#06d6a0","#118ab2"][Math.floor(Math.random()*4)];
+document.body.appendChild(c);
 }
 
 /* TYPEWRITER INTRO */
@@ -331,24 +310,67 @@ showMessages();
 
 typeWriter();
 
-/* SHOW PARAGRAPHS ONE BY ONE */
+/* SHOW PARAGRAPHS */
 
 function showMessages(){
+const msgs=document.querySelectorAll(".message");
 
-const messages=document.querySelectorAll(".message");
-
-messages.forEach((p,index)=>{
+msgs.forEach((m,index)=>{
 setTimeout(()=>{
-p.classList.add("show");
-},index*1800);
+m.classList.add("show");
+},index*1700);
 });
+}
+
+/* MUSIC + HEART BEAT */
+
+function playMusic(){
+
+document.getElementById("bgMusic").play();
+
+document.querySelector(".heart").classList.add("beat");
 
 }
 
-/* MUSIC */
+/* CAKE EVENT */
 
-function playMusic(){
-document.getElementById("bgMusic").play();
+const cake=document.querySelector(".cake");
+const flames=document.querySelectorAll(".flame");
+
+const observer=new IntersectionObserver(entries=>{
+if(entries[0].isIntersecting){
+
+flames.forEach(f=>{
+f.classList.add("out");
+});
+
+burst();
+
+}
+});
+
+observer.observe(cake);
+
+/* CONFETTI BURST */
+
+function burst(){
+
+for(let i=0;i<80;i++){
+
+let conf=document.createElement("div");
+
+conf.className="confetti";
+
+conf.style.left=Math.random()*100+"vw";
+
+conf.style.animationDuration=(Math.random()*2+1)+"s";
+
+conf.style.background=["#ff4d6d","#ffd166","#06d6a0","#118ab2"][Math.floor(Math.random()*4)];
+
+document.body.appendChild(conf);
+
+}
+
 }
 
 </script>
