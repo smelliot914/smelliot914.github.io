@@ -8,7 +8,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
-/* --- Body & Background --- */
 body{
   margin:0;
   font-family:'Poppins',sans-serif;
@@ -18,184 +17,64 @@ body{
   overflow-x:hidden;
 }
 
-/* --- Confetti --- */
-.confetti{
-  position:fixed;
-  width:10px;
-  height:10px;
-  top:-10px;
-  animation:fall linear infinite;
-  opacity:0.8;
-  z-index: 999;
-}
-@keyframes fall{
-  to{transform:translateY(110vh) rotate(360deg);}
-}
+/* Confetti */
+.confetti{position:fixed;width:10px;height:10px;top:-10px;animation:fall linear infinite;opacity:0.8;z-index:999;}
+@keyframes fall{to{transform:translateY(110vh) rotate(360deg);}}
 
-/* --- Balloons --- */
-.balloon{
-  width:70px;
-  height:90px;
-  border-radius:50%;
-  position:fixed;
-  bottom:-120px;
-  box-shadow:inset -10px -15px 25px rgba(0,0,0,0.3);
-  animation:float linear infinite;
-  z-index:1000;
-}
-.balloon:after{
-  content:"";
-  width:2px;
-  height:50px;
-  background:white;
-  position:absolute;
-  bottom:-50px;
-  left:50%;
-}
-@keyframes float{
-  0%{transform:translateY(0);}
-  50%{transform:translateY(-65vh) translateX(10px);}
-  100%{transform:translateY(-130vh) translateX(-10px);}
-}
+/* Balloons */
+.balloon{width:70px;height:90px;border-radius:50%;position:fixed;bottom:-120px;box-shadow:inset -10px -15px 25px rgba(0,0,0,0.3);animation:float linear infinite;z-index:1000;}
+.balloon:after{content:"";width:2px;height:50px;background:white;position:absolute;bottom:-50px;left:50%;}
+@keyframes float{0%{transform:translateY(0);}50%{transform:translateY(-65vh) translateX(10px);}100%{transform:translateY(-130vh) translateX(-10px);}}
 
-/* --- Heart --- */
-.heart{
-  width:150px;
-  height:150px;
-  margin:40px auto;
-  position:relative;
-}
-.heart:before,.heart:after{
-  content:"";
-  position:absolute;
-  width:75px;
-  height:120px;
-  background:linear-gradient(145deg,#ff4d6d,#c9184a);
-  border-radius:75px 75px 0 0;
-}
-.heart:before{
-  left:75px;
-  transform:rotate(-45deg);
-  transform-origin:0 100%;
-}
-.heart:after{
-  left:0;
-  transform:rotate(45deg);
-  transform-origin:100% 100%;
-}
-.heart.beat{
-  animation:heartbeat 1s infinite;
-}
-@keyframes heartbeat{
-  0%{transform:scale(1);}
-  25%{transform:scale(1.15);}
-  40%{transform:scale(1);}
-  60%{transform:scale(1.15);}
-  100%{transform:scale(1);}
-}
+/* Heart */
+.heart{width:150px;height:150px;margin:40px auto;position:relative;}
+.heart:before,.heart:after{content:"";position:absolute;width:75px;height:120px;background:linear-gradient(145deg,#ff4d6d,#c9184a);border-radius:75px 75px 0 0;}
+.heart:before{left:75px;transform:rotate(-45deg);transform-origin:0 100%;}
+.heart:after{left:0;transform:rotate(45deg);transform-origin:100% 100%;}
+.heart.beat{animation:heartbeat 1s infinite;}
+@keyframes heartbeat{0%{transform:scale(1);}25%{transform:scale(1.15);}40%{transform:scale(1);}60%{transform:scale(1.15);}100%{transform:scale(1);}}
 
-/* --- Heading Animation --- */
+/* Heading */
 h1{
   font-family:'Playfair Display',serif;
   font-size:42px;
-  color:#ffe5ec;
   margin-bottom:30px;
-  background: linear-gradient(90deg, #ff758f, #ffd166, #06d6a0, #118ab2);
+  background: linear-gradient(90deg,#ff758f,#c9184a);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: hue 5s linear infinite;
+  text-shadow:0 0 10px rgba(255,200,220,0.5);
+  animation: glow 2.5s ease-in-out infinite alternate;
 }
-@keyframes hue{
-  0%{filter:hue-rotate(0deg);}
-  100%{filter:hue-rotate(360deg);}
-}
+@keyframes glow{0%{text-shadow:0 0 5px rgba(255,200,220,0.3);}100%{text-shadow:0 0 15px rgba(255,200,220,0.6);}}
 
-/* --- Messages --- */
-.message{
-  opacity:0;
-  transform:translateY(25px);
-  transition:1s;
-  line-height:1.9;
-  margin-bottom:28px;
-  font-size:17px;
-  max-width:800px;
-  margin-left:auto;
-  margin-right:auto;
-}
-.message.show{
-  opacity:1;
-  transform:translateY(0);
-}
+/* Messages */
+.message{opacity:0;transform:translateY(25px);transition:1s;line-height:1.9;margin-bottom:28px;font-size:17px;max-width:800px;margin-left:auto;margin-right:auto;}
+.message.show{opacity:1;transform:translateY(0);}
 
-/* --- Button --- */
-button{
-  padding:14px 30px;
-  background:#ff4d6d;
-  border:none;
-  color:white;
-  border-radius:30px;
-  font-size:16px;
-  cursor:pointer;
-  margin-top:40px;
-}
-
-/* --- Cake 3D --- */
-.cake{
-  margin:60px auto;
-  position:relative;
+/* Photo */
+.photo-container{margin:40px 0;perspective:800px;}
+.photo-container img{
   width:220px;
-  perspective:800px;
+  border-radius:20px;
+  box-shadow:0 20px 40px rgba(0,0,0,0.4);
+  transition:transform 0.5s ease;
 }
-.layer{
-  height:60px;
-  background:linear-gradient(145deg,#ff8fab,#ff4d6d);
-  border-radius:25px;
-  box-shadow:0 15px 30px rgba(0,0,0,0.4);
-  margin-bottom:-20px;
-  position:relative;
-}
+.photo-container img:hover{transform:scale(1.05);}
+
+/* Button */
+button{padding:14px 30px;background:#ff4d6d;border:none;color:white;border-radius:30px;font-size:16px;cursor:pointer;margin-top:40px;}
+
+/* Cake 3D */
+.cake{margin:60px auto;position:relative;width:220px;perspective:800px;}
+.layer{height:60px;background:linear-gradient(145deg,#ff8fab,#ff4d6d);border-radius:25px;box-shadow:0 15px 30px rgba(0,0,0,0.4);margin-bottom:-20px;position:relative;}
 .layer.base{width:220px;}
 .layer.middle{width:160px;margin:0 auto;}
 .layer.top{width:120px;margin:0 auto;}
-.candles{
-  position:absolute;
-  top:-40px;
-  left:50%;
-  transform:translateX(-50%);
-  display:flex;
-  gap:12px;
-  z-index:2;
-}
-.candle{
-  width:16px;
-  height:50px;
-  background:linear-gradient(#fff,#ddd);
-  border-radius:4px;
-  position:relative;
-  box-shadow:0 3px 6px rgba(0,0,0,0.3);
-}
-.flame{
-  width:12px;
-  height:18px;
-  background:radial-gradient(circle,#ffd166 20%,#ff9f1c 70%);
-  border-radius:50%;
-  position:absolute;
-  top:-18px;
-  left:2px;
-  animation:flicker .25s infinite alternate;
-  box-shadow:0 0 10px #ffd166;
-}
-.flame.out{
-  opacity:0;
-  transform:scale(0);
-  transition:.5s;
-}
-@keyframes flicker{
-  0%{transform:scale(1);}
-  50%{transform:scale(1.15);}
-  100%{transform:scale(1);}
-}
-
+.candles{position:absolute;top:-40px;left:50%;transform:translateX(-50%);display:flex;gap:12px;z-index:2;}
+.candle{width:16px;height:50px;background:linear-gradient(#fff,#ddd);border-radius:4px;position:relative;box-shadow:0 3px 6px rgba(0,0,0,0.3);}
+.flame{width:12px;height:18px;background:radial-gradient(circle,#ffd166 20%,#ff9f1c 70%);border-radius:50%;position:absolute;top:-18px;left:2px;box-shadow:0 0 12px #ffd166,0 0 25px #ffd16688,0 0 40px #ff9f1c55;animation:flicker 0.25s infinite alternate;}
+.flame.out{opacity:0;transform:scale(0);transition:.5s;}
+@keyframes flicker{0%{transform:scale(1) translateY(0);}50%{transform:scale(1.2) translateY(-2px);}100%{transform:scale(1) translateY(0);}}
 </style>
 </head>
 
@@ -208,10 +87,13 @@ button{
 <div class="balloon" style="left:70%;animation-duration:20s;background:#118ab2"></div>
 
 <div class="container">
-
-<h1>🎉 Happy 19th Birthday, My Blossom ❤️ 🎉</h1>
-
+<h1>Happy 19th Birthday, My Blossom ❤️</h1>
 <div class="heart"></div>
+
+<!-- Her Picture -->
+<div class="photo-container">
+  <img src="her.jpg" alt="My Blossom">
+</div>
 
 <!-- Messages -->
 <p class="message">To: My Best Friend💞, My Love❣️, My Dweeb🫠, My Nerd🤓, My 1️⃣, My 2️⃣, My 3️⃣, My 4️⃣, My 5️⃣, My 6️⃣, My 7️⃣, My 8️⃣, My 9️⃣, My 🔟, My Blossom ❤️</p>
@@ -256,12 +138,9 @@ button{
 </div>
 
 <button onclick="playMusic()">Tap to Play Our Song 🎵</button>
-
 </div>
 
-<audio id="bgMusic">
-<source src="song.mp3" type="audio/mpeg">
-</audio>
+<audio id="bgMusic"><source src="song.mp3" type="audio/mpeg"></audio>
 
 <script>
 // CONFETTI
@@ -274,14 +153,12 @@ for(let i=0;i<50;i++){
   document.body.appendChild(c);
 }
 
-// SHOW MESSAGES SEQUENTIALLY
+// SHOW MESSAGES
 function showMessages(){
   const msgs=document.querySelectorAll(".message");
-  msgs.forEach((m,i)=>{
-    setTimeout(()=>{ m.classList.add("show"); }, i*1800);
-  });
+  msgs.forEach((m,i)=>{setTimeout(()=>{m.classList.add("show");}, i*1800);});
 }
-window.onload = showMessages;
+window.onload=showMessages;
 
 // MUSIC + HEART BEAT
 function playMusic(){
@@ -289,7 +166,7 @@ function playMusic(){
   document.querySelector(".heart").classList.add("beat");
 }
 
-// CAKE FLAME OUT + BURST CONFETTI
+// CAKE FLAMES + CONFETTI BURST
 const cake=document.querySelector(".cake");
 const flames=document.querySelectorAll(".flame");
 const observer=new IntersectionObserver(entries=>{
@@ -310,3 +187,4 @@ observer.observe(cake);
 
 </body>
 </html>
+
