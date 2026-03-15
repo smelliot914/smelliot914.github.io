@@ -183,9 +183,12 @@ h1{
 
 <script>
 // Tap to play music
-document.getElementById("playBtn").addEventListener("click",()=>{
-  document.getElementById("bgMusic").play();
-  document.getElementById("playBtn").style.display="none";
+const playBtn = document.getElementById("playBtn");
+const bgMusic = document.getElementById("bgMusic");
+
+playBtn.addEventListener("click", () => {
+  bgMusic.play().catch(err => console.log("Playback failed:", err));
+  playBtn.style.display = "none";
 });
 
 // Countdown
@@ -228,7 +231,9 @@ Firework.prototype.update=function(){
     this.x+=this.vx;
     this.y+=this.vy;
     this.vy+=0.3; // gravity
-    if(this.vy>=0){
+
+    // explode around centre of page
+    if(this.y <= window.innerHeight / 2){
       this.exploded=true;
       for(let i=0;i<50;i++){
         this.particles.push({
@@ -311,4 +316,4 @@ function startConfetti(){
 }
 </script>
 </body>
-  </html>
+</html>
