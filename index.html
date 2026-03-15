@@ -1,4 +1,4 @@
-  <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -185,7 +185,6 @@ h1{
 // Tap to play music
 const playBtn = document.getElementById("playBtn");
 const bgMusic = document.getElementById("bgMusic");
-
 playBtn.addEventListener("click", () => {
   bgMusic.play().catch(err => console.log("Playback failed:", err));
   playBtn.style.display = "none";
@@ -210,7 +209,7 @@ function startCountdown(){
       clearInterval(timer);
       countdownEl.textContent='';
       startFireworks();
-      setTimeout(showMainPage,2500); // show main after fireworks
+      setTimeout(showMainPage,2500);
     }
   },1000);
 }
@@ -222,7 +221,7 @@ function Firework(){
   this.x=Math.random()*window.innerWidth;
   this.y=window.innerHeight;
   this.vx=(Math.random()-0.5)*4;
-  this.vy=-(Math.random()*8+12); // higher launch
+  this.vy=-(Math.random()*8+12);
   this.particles=[];
   this.exploded=false;
 }
@@ -232,15 +231,15 @@ Firework.prototype.update=function(){
     this.y+=this.vy;
     this.vy+=0.3; // gravity
 
-    // explode around centre of page
-    if(this.y <= window.innerHeight / 2){
+    // explode higher
+    if(this.y <= window.innerHeight / 3){
       this.exploded=true;
-      for(let i=0;i<50;i++){
+      for(let i=0;i<80;i++){ // more particles
         this.particles.push({
           x:this.x,
           y:this.y,
-          vx:(Math.random()-0.5)*6,
-          vy:(Math.random()-0.5)*6,
+          vx:(Math.random()-0.5)*8,
+          vy:(Math.random()-0.5)*8,
           alpha:1,
           color:['#ff4d6d','#ffd166','#06d6a0','#118ab2'][Math.floor(Math.random()*4)]
         });
@@ -266,7 +265,7 @@ Firework.prototype.draw=function(){
       ctx.fillStyle=p.color;
       ctx.globalAlpha=p.alpha;
       ctx.beginPath();
-      ctx.arc(p.x,p.y,3,0,Math.PI*2);
+      ctx.arc(p.x,p.y,Math.random()*3+1,0,Math.PI*2); // spark size
       ctx.fill();
       ctx.globalAlpha=1;
     });
@@ -281,7 +280,8 @@ function startFireworks(){
 }
 
 function animateFireworks(){
-  ctx.clearRect(0,0,fireworksCanvas.width,fireworksCanvas.height);
+  ctx.fillStyle='rgba(0,0,0,0.15)'; // trail effect
+  ctx.fillRect(0,0,fireworksCanvas.width,fireworksCanvas.height);
   fireworks.forEach(f=>{f.update(); f.draw();});
   fireworks=fireworks.filter(f=>!f.exploded || f.particles.length>0);
   if(fireworks.length>0){
@@ -316,4 +316,4 @@ function startConfetti(){
 }
 </script>
 </body>
-  </html>
+</html>
