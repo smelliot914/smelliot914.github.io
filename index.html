@@ -14,7 +14,7 @@ body{
   text-align:center;
 }
 
-/* Intro Countdown Section */
+/* Countdown / Fireworks Page */
 #intro{
   width:100vw;
   height:100vh;
@@ -22,14 +22,24 @@ body{
   justify-content:center;
   align-items:center;
   flex-direction:column;
-  background: linear-gradient(135deg, #240046, #c9184a, #ff4d6d);
+  background: linear-gradient(135deg,#240046,#6a0dad,#ff4d6d);
   position:relative;
 }
-
 #countdown{
   font-size:100px;
   font-family:'Parisienne',cursive;
-  text-shadow: 0 0 20px #ffd166, 0 0 40px #ff4d6d;
+  text-shadow:0 0 20px #ffd166,0 0 40px #ff4d6d;
+  margin-bottom:30px;
+}
+#playBtn{
+  padding:14px 30px;
+  background:#ff4d6d;
+  border:none;
+  color:white;
+  border-radius:30px;
+  font-size:18px;
+  cursor:pointer;
+  margin-bottom:20px;
 }
 
 /* Fireworks Canvas */
@@ -113,10 +123,11 @@ h1{
 </head>
 <body>
 
-<!-- Intro Countdown -->
+<!-- Intro Countdown + Fireworks -->
 <div id="intro">
   <canvas id="fireworksCanvas"></canvas>
   <div id="countdown">3</div>
+  <button id="playBtn">Tap to Play Our Song 🎵</button>
 </div>
 
 <!-- Main Wishes Page -->
@@ -130,14 +141,12 @@ h1{
 <div class="balloon" style="left:50%;animation-duration:16s;background:#06d6a0"></div>
 <div class="balloon" style="left:70%;animation-duration:20s;background:#118ab2"></div>
 
-<!-- Confetti added by JS -->
-
 <!-- Photo -->
 <div class="photo-container">
   <img src="her.jpg" alt="My Blossom">
 </div>
 
-<!-- Full Original Birthday Messages -->
+<!-- All Original Messages -->
 <p class="message">To: My Best Friend💞, My Love❣️, My Dweeb🫠, My Nerd🤓, My four eyes😂, My 1️⃣, My 2️⃣, My 3️⃣, My 4️⃣, My 5️⃣, My 6️⃣, My 7️⃣, My 8️⃣, My 9️⃣, My 🔟, My Blossom ❤️</p>
 <p class="message">Happy 19th Birthday, my love 💕. Today, I celebrate not just the day you were born, but the incredible woman you are becoming. Every year you grow wiser, stronger, and more beautiful in ways that go far beyond appearances🩷</p>
 <p class="message">"I’ve always thought attraction is more than just looks, it’s about the person themselves. And you, you are the perfect example. Your character, behaviour, flaws, and everything about you are incredibly attractive. You don’t sound unrefined or unintelligent; instead, there’s a depth and understanding in you beyond your age that fascinates me. People like you are rare. And of course… you’re very pretty too, with your charmingly dweebish glasses🤓" Those were the words I used to confess how I felt about you indirectly, when I said it to Brendan, and I say them again, but this time, to you, and I mean every single word. I love you so much Blossom, more than I can describe, and the day we started talking to each other, I wondered if the stars looked at us and thought, <i>'oh! they finally met💞.'</i></p>
@@ -167,57 +176,61 @@ h1{
   </div>
 </div>
 
-<audio id="bgMusic" autoplay loop>
-  <source src="song.mp3" type="audio/mpeg">
+<!-- Background Music -->
+<audio id="bgMusic" loop>
+  <source src="say_you_wont_let_go.mp3" type="audio/mpeg">
 </audio>
 
 <script>
-// Autoplay music
-const music = document.getElementById("bgMusic");
-music.play().catch(()=>{});
+// Tap to play music
+document.getElementById("playBtn").addEventListener("click",()=>{
+  document.getElementById("bgMusic").play();
+  document.getElementById("playBtn").style.display="none";
+});
 
 // Countdown
-let countdown = 3;
-const countdownEl = document.getElementById("countdown");
-const intro = document.getElementById("intro");
-const main = document.getElementById("main");
-const fireworksCanvas = document.getElementById("fireworksCanvas");
-fireworksCanvas.width = window.innerWidth;
-fireworksCanvas.height = window.innerHeight;
-const ctx = fireworksCanvas.getContext("2d");
+let countdown=3;
+const countdownEl=document.getElementById("countdown");
+const intro=document.getElementById("intro");
+const main=document.getElementById("main");
+const fireworksCanvas=document.getElementById("fireworksCanvas");
+fireworksCanvas.width=window.innerWidth;
+fireworksCanvas.height=window.innerHeight;
+const ctx=fireworksCanvas.getContext("2d");
 
 function startCountdown(){
-  const timer = setInterval(()=>{
+  const timer=setInterval(()=>{
     countdown--;
     if(countdown>0){
-      countdownEl.textContent = countdown;
+      countdownEl.textContent=countdown;
     }else{
       clearInterval(timer);
+      countdownEl.textContent='';
       startFireworks();
-      setTimeout(showMainPage,2000); // show main after fireworks
+      setTimeout(showMainPage,2500); // show main after fireworks
     }
   },1000);
 }
-window.onload = startCountdown;
+window.onload=startCountdown;
 
 // Fireworks
 let fireworks=[];
 function Firework(){
   this.x=Math.random()*window.innerWidth;
   this.y=window.innerHeight;
-  this.vx=(Math.random()-0.5)*6;
-  this.vy=-Math.random()*10-8;
+  this.vx=(Math.random()-0.5)*4;
+  this.vy=-(Math.random()*8+12); // higher launch
   this.particles=[];
-  this.done=false;
+  this.exploded=false;
 }
 Firework.prototype.update=function(){
-  if(!this.done){
+  if(!this.exploded){
     this.x+=this.vx;
     this.y+=this.vy;
     this.vy+=0.3; // gravity
     if(this.vy>=0){
-      this.done=true;
-      for(let i=0;i<30;i++){
+      this.exploded=true;
+      for(let i=0;i<50;i++){
         this.particles.push({
           x:this.x,
           y:this.y,
@@ -238,7 +251,7 @@ Firework.prototype.update=function(){
   }
 }
 Firework.prototype.draw=function(){
-  if(!this.done){
+  if(!this.exploded){
     ctx.fillStyle='white';
     ctx.beginPath();
     ctx.arc(this.x,this.y,3,0,Math.PI*2);
@@ -265,7 +278,7 @@ function startFireworks(){
 function animateFireworks(){
   ctx.clearRect(0,0,fireworksCanvas.width,fireworksCanvas.height);
   fireworks.forEach(f=>{f.update(); f.draw();});
-  fireworks = fireworks.filter(f=>!f.done || f.particles.length>0);
+  fireworks=fireworks.filter(f=>!f.exploded || f.particles.length>0);
   if(fireworks.length>0){
     requestAnimationFrame(animateFireworks);
   }
@@ -298,4 +311,4 @@ function startConfetti(){
 }
 </script>
 </body>
-</html>
+  </html>
