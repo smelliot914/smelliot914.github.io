@@ -216,78 +216,105 @@ function startCountdown(){
 }
 window.onload=startCountdown;
 
-// Fireworks
-let fireworks=[];
-function Firework(){
-  this.x=Math.random()*window.innerWidth;
-  this.y=window.innerHeight;
-  this.vx=(Math.random()-0.5)*4;
-  this.vy=-(Math.random()*8+12); // higher launch
-  this.particles=[];
-  this.exploded=false;
-}
-Firework.prototype.update=function(){
-  if(!this.exploded){
-    this.x+=this.vx;
-    this.y+=this.vy;
-    this.vy+=0.3; // gravity
+// Fireworks Setup
+let fireworks = [];
+const colors = ['#ff4d6d', '#ffd166', '#06d6a0', '#118ab2', '#ff85a1', '#ffba08'];
+fireworksCanvas.width = window.innerWidth;
+fireworksCanvas.height = window.innerHeight;
+const ctx = fireworksCanvas.getContext("2d");
 
-    // explode around centre of page
-    if(this.y <= window.innerHeight / 2){
-      this.exploded=true;
-      for(let i=0;i<50;i++){
+// Firework Class
+function Firework() {
+  this.x = window.innerWidth * 0.2 + Math.random() * window.innerWidth * 0.6; // random start across 20%-80%
+  this.y = window.innerHeight; // start from bottom
+  this.vx = (Math.random() - 0.5) * 4; 
+  this.vy = -(Math.random() * 8 + 12); 
+  this.particles = [];
+  this.exploded = false;
+  this.size = 3 + Math.random() * 2;
+}
+
+Firework.prototype.update = function() {
+  if (!this.exploded) {
+    this.x += this.vx;
+    this.y += this.vy;
+    this.vy += 0.3; // gravity
+
+    // Explode when vertical speed stops
+    if (this.vy >= 0) {
+      this.exploded = true;
+      for (let i = 0; i < 100; i++) {
+        const angle = Math.random() * Math.PI * 2;
+        const speed = Math.random() * 6 + 2;
         this.particles.push({
-          x:this.x,
-          y:this.y,
-          vx:(Math.random()-0.5)*6,
-          vy:(Math.random()-0.5)*6,
-          alpha:1,
-          color:['#ff4d6d','#ffd166','#06d6a0','#118ab2'][Math.floor(Math.random()*4)]
+          x: this.x,
+          y: this.y,
+          vx: Math.cos(angle) * speed,
+          vy: Math.sin(angle) * speed,
+          alpha: 1,
+          color: colors[Math.floor(Math.random() * colors.length)],
+          size: 2 + Math.random() * 2
         });
       }
     }
-  }else{
-    this.particles.forEach(p=>{
-      p.x+=p.vx;
-      p.y+=p.vy;
-      p.alpha-=0.02;
+  } else {
+    this.particles.forEach(p => {
+      p.x += p.vx;
+      p.y += p.vy;
+      p.vy += 0.05; // gravity
+      p.alpha -= 0.02;
     });
-    this.particles=this.particles.filter(p=>p.alpha>0);
+    this.particles = this.particles.filter(p => p.alpha > 0);
   }
 }
-Firework.prototype.draw=function(){
-  if(!this.exploded){
-    ctx.fillStyle='white';
+
+Firework.prototype.draw = function() {
+  if (!this.exploded) {
+    ctx.fillStyle = 'white';
     ctx.beginPath();
-    ctx.arc(this.x,this.y,3,0,Math.PI*2);
+    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
     ctx.fill();
-  }else{
-    this.particles.forEach(p=>{
-      ctx.fillStyle=p.color;
-      ctx.globalAlpha=p.alpha;
+  } else {
+    this.particles.forEach(p => {
+      ctx.fillStyle = p.color;
+      ctx.globalAlpha = p.alpha;
       ctx.beginPath();
-      ctx.arc(p.x,p.y,3,0,Math.PI*2);
+      ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
       ctx.fill();
-      ctx.globalAlpha=1;
+      ctx.globalAlpha = 1;
     });
   }
 }
 
-function startFireworks(){
-  for(let i=0;i<5;i++){
-    fireworks.push(new Firework());
-  }
+// Launch a single firework
+function launchFirework() {
+  fireworks.push(new Firework());
+}
+
+// Start multiple fireworks in sequence
+function startFireworks() {
+  let launches = 0;
+  const interval = setInterval(() => {
+    launchFirework();
+    launches++;
+    if (launches >= 20) clearInterval(interval); // more fireworks for longer show
+  }, 250); // every 0.25s
   animateFireworks();
 }
 
-function animateFireworks(){
-  ctx.clearRect(0,0,fireworksCanvas.width,fireworksCanvas.height);
-  fireworks.forEach(f=>{f.update(); f.draw();});
-  fireworks=fireworks.filter(f=>!f.exploded || f.particles.length>0);
-  if(fireworks.length>0){
-    requestAnimationFrame(animateFireworks);
-  }
+// Animate all fireworks
+function animateFireworks() {
+  ctx.clearRect(0, 0, fireworksCanvas.width, fireworksCanvas.height);
+  fireworks.forEach(f => { f.update(); f.draw(); });
+  fireworks = fireworks.filter(f => !f.exploded || f.particles.length > 0);
+  if (fireworks.length > 0) requestAnimationFrame(animateFireworks);
 }
+
+// Ensure canvas resizes with window
+window.addEventListener('resize', () => {
+  fireworksCanvas.width = window.innerWidth;
+  fireworksCanvas.height = window.innerHeight;
+});
 
 // Show main page
 function showMainPage(){
