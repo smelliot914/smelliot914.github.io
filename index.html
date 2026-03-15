@@ -3,39 +3,62 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Happy Birthday My Blossom ❤️</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-
+<title>Happy 19th Birthday, Blossom ❤️</title>
+<link href="https://fonts.googleapis.com/css2?family=Parisienne&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 <style>
 body{
   margin:0;
   font-family:'Poppins',sans-serif;
-  background: linear-gradient(135deg,#240046,#ffccd5,#b5179e);
+  overflow-x:hidden;
   color:white;
   text-align:center;
-  overflow-x:hidden;
 }
 
-/* Countdown */
+/* Countdown / Fireworks Page */
+#intro{
+  width:100vw;
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+  background: linear-gradient(135deg,#240046,#6a0dad,#ff4d6d);
+  position:relative;
+}
 #countdown{
-  position:fixed;
-  top:50%;
-  left:50%;
-  transform:translate(-50%,-50%);
-  font-size:80px;
-  font-family:'Playfair Display',serif;
-  color:#ffd166;
-  text-shadow:0 0 20px #ff758f;
-  z-index:2000;
+  font-size:100px;
+  font-family:'Parisienne',cursive;
+  text-shadow:0 0 20px #ffd166,0 0 40px #ff4d6d;
+  margin-bottom:30px;
+}
+#playBtn{
+  padding:14px 30px;
+  background:#ff4d6d;
+  border:none;
+  color:white;
+  border-radius:30px;
+  font-size:18px;
+  cursor:pointer;
+  margin-bottom:20px;
 }
 
 /* Fireworks Canvas */
 #fireworksCanvas{
-  position:fixed;
-  top:0;left:0;width:100%;height:100%;
+  position:absolute;
+  top:0;left:0;
+  width:100%;
+  height:100%;
   pointer-events:none;
-  z-index:1500;
+}
+
+/* Main Wishes Page */
+#main{
+  display:none;
+  min-height:100vh;
+  padding:20px;
+  background: linear-gradient(135deg,#240046,#6a0dad,#ff4d6d);
+  overflow-x:hidden;
+  overflow-y:auto;
 }
 
 /* Confetti */
@@ -57,16 +80,14 @@ body{
 
 /* Heading */
 h1{
-  font-family:'Playfair Display',serif;
-  font-size:42px;
+  font-family:'Parisienne',cursive;
+  font-size:60px;
   margin-bottom:30px;
-  background: linear-gradient(90deg,#ff758f,#c9184a);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  text-shadow:0 0 10px rgba(255,200,220,0.5);
+  color:#ffccd5;
+  text-shadow:0 0 15px #ff4d6d,0 0 25px #c9184a;
   animation: glow 2.5s ease-in-out infinite alternate;
 }
-@keyframes glow{0%{text-shadow:0 0 5px rgba(255,200,220,0.3);}100%{text-shadow:0 0 15px rgba(255,200,220,0.6);}}
+@keyframes glow{0%{text-shadow:0 0 10px #ffccd5;}100%{text-shadow:0 0 30px #ff4d6d;}}
 
 /* Messages */
 .message{opacity:0;transform:translateY(25px);transition:1s;line-height:1.9;margin-bottom:28px;font-size:17px;max-width:800px;margin-left:auto;margin-right:auto;}
@@ -81,9 +102,6 @@ h1{
   transition:transform 0.5s ease;
 }
 .photo-container img:hover{transform:scale(1.05);}
-
-/* Button */
-button{padding:14px 30px;background:#ff4d6d;border:none;color:white;border-radius:30px;font-size:16px;cursor:pointer;margin-top:40px;}
 
 /* Cake 3D */
 .cake{margin:60px auto;position:relative;width:220px;perspective:800px;}
@@ -100,18 +118,22 @@ button{padding:14px 30px;background:#ff4d6d;border:none;color:white;border-radiu
   position:absolute;top:-18px;left:2px;
   box-shadow:0 0 12px #ffd166,0 0 25px #ffd16688,0 0 40px #ff9f1c55;
   animation:flicker 0.25s infinite alternate;
-  opacity:1;
 }
-@keyframes flicker{0%{transform:scale(1) translateY(0);}50%{transform:scale(1.2) translateY(-2px);}100%{transform:scale(1) translateY(0);}}
 </style>
 </head>
 <body>
 
-<!-- Countdown -->
-<div id="countdown">3</div>
+<!-- Intro Countdown + Fireworks -->
+<div id="intro">
+  <canvas id="fireworksCanvas"></canvas>
+  <div id="countdown">3</div>
+  <button id="playBtn">Tap to Play Our Song 🎵</button>
+</div>
 
-<!-- Fireworks Canvas -->
-<canvas id="fireworksCanvas"></canvas>
+<!-- Main Wishes Page -->
+<div id="main">
+<h1>Happy 19th Birthday, Blossom ❤️</h1>
+<div class="heart beat"></div>
 
 <!-- Balloons -->
 <div class="balloon" style="left:10%;animation-duration:15s;background:#ff758f"></div>
@@ -119,19 +141,15 @@ button{padding:14px 30px;background:#ff4d6d;border:none;color:white;border-radiu
 <div class="balloon" style="left:50%;animation-duration:16s;background:#06d6a0"></div>
 <div class="balloon" style="left:70%;animation-duration:20s;background:#118ab2"></div>
 
-<div class="container" style="display:none;">
-<h1>Happy 19th Birthday, Blossom ❤️</h1>
-<div class="heart"></div>
-
-<!-- Her Picture -->
+<!-- Photo -->
 <div class="photo-container">
   <img src="her.jpg" alt="My Blossom">
 </div>
 
-<!-- Messages -->
+<!-- All Original Messages -->
 <p class="message">To: My Best Friend💞, My Love❣️, My Dweeb🫠, My Nerd🤓, My four eyes😂, My 1️⃣, My 2️⃣, My 3️⃣, My 4️⃣, My 5️⃣, My 6️⃣, My 7️⃣, My 8️⃣, My 9️⃣, My 🔟, My Blossom ❤️</p>
 <p class="message">Happy 19th Birthday, my love 💕. Today, I celebrate not just the day you were born, but the incredible woman you are becoming. Every year you grow wiser, stronger, and more beautiful in ways that go far beyond appearances🩷</p>
-<p class="message">"I’ve always thought attraction is more than just looks, it’s about the person themselves. And you, you are the perfect example. Your character, behaviour, flaws, and everything about you are incredibly attractive. You don’t sound unrefined or unintelligent; instead, there’s a depth and understanding in you beyond your age that fascinates me. People like you are rare. And of course… you’re very pretty too, with your charmingly dweebish glasses🤓" Those were the words I used to confess how I felt about you indirectly, when I said it to Brendan, and I say them again, but this time, to you, and I mean every single word. I love you so much Blossom, more than I can describe, and the day we started talking to each other, I wondered if the stars looked at us and thought, <i>'oh! they finally met💞.'</i></p>
+<p class="message"><i>'I’ve always thought attraction is more than just looks, it’s about the person themselves. And you, you are the perfect example. Your character, behaviour, flaws, and everything about you are incredibly attractive. You don’t sound unrefined or unintelligent; instead, there’s a depth and understanding in you beyond your age that fascinates me. People like you are rare. And of course… you’re very pretty too, with your charmingly dweebish glasses🤓'</i> Those were the words I used to confess how I felt about you indirectly, when I said it to Brendan, and I say them again, but this time, to you, and I mean every single word. I love you so much Blossom, more than I can describe, and the day we started talking to each other, I wondered if the stars looked at us and thought, <i>'oh! they finally met💞.'</i></p>
 <p class="message">And perhaps they were right. Because from that moment, something about you felt rare and meaningful, like meeting someone you were somehow always meant to know, and the way I look forward to your texts, replies, calls, daily updates, you’d be surprised🌚</p>
 <p class="message">As it is written in Jeremiah 29:11:<br>“For I know the plans I have for you,” declares the Lord, “plans to prosper you and not to harm you, plans to give you hope and a future, and i see you already with a bright future, Your Parents believe in you! your Sisters believe in you! Relatives believe in you! I believe in you! and I'm sure you believe in yourself! it's so obvious you're destined for greatness❤️</p>
 <p class="message">When I look at you, your ambition, your mind, your kindness, I truly believe you are walking toward something extraordinary. You are ambitious, determined, and beautiful inside and out. I could not be prouder of the future you are building and the way you see yourself. You are a powerful source of motivation in my life.</p>
@@ -140,10 +158,10 @@ button{padding:14px 30px;background:#ff4d6d;border:none;color:white;border-radiu
 <p class="message">And if Economics is the study of value and scarcity, then by supply and demand, you are priceless. Scarcity increases value, and there has never been—and will never be—another you. You are a limited edition, better still, the only edition🥹</p>
 <p class="message">Leonardo da Vinci once said, “Simplicity is the ultimate sophistication.” That’s you: effortless, extraordinary, perfect in every detail😎</p>
 <p class="message">In physics, imagination turns possibility into reality. I imagined you before I even knew you existed, imagined being with you, holding you, sharing a future together. And now, every glance, every smile, every thought of yours is like the perfect equation: precise, effortless, and breathtakingly beautiful❤️</p>
-<p class="message">You are what Art itself would call a "pièce de résistance"😍</p>
+<p class="message">You are what Art itself would call <i>'pièce de résistance'😍</i></p>
 <p class="message">I cherish you beyond measure. I love you in ways English cannot fully express, in ways that mathematics, science, and all the languages in the world can only attempt to describe.</p>
 <p class="message">Grow in grace, my friend, my best friend, my love. Happy Birthday once again!🎂</p>
-<p class="message">PS: I learnt coding because of you, and it was worth it! I almost cried typing this and I've edited this more than 20 times(I'm not even exaggerating 😂😭) because there’s always something to say about you. It is endless🤍</p>
+<p class="message">PS: I learnt coding because of you, and it was worth it! Except the cake below didn't turn out perfectly🥲. I almost cried typing this and I've edited this more than 70 times(I'm not even exaggerating 😂😭) because there’s always something to say about you. It is endless🤍</p>
 
 <!-- Cake -->
 <div class="cake">
@@ -158,82 +176,135 @@ button{padding:14px 30px;background:#ff4d6d;border:none;color:white;border-radiu
   </div>
 </div>
 
-<button id="playBtn" onclick="playMusic()">Tap to Play Our Song 🎵</button>
-</div>
-
-<audio id="bgMusic" preload="auto" loop>
+<!-- Background Music -->
+<audio id="bgMusic" loop>
   <source src="say_you_wont_let_go.mp3" type="audio/mpeg">
 </audio>
 
 <script>
+// Tap to play music
+const playBtn = document.getElementById("playBtn");
+const bgMusic = document.getElementById("bgMusic");
+
+playBtn.addEventListener("click", () => {
+  bgMusic.play().catch(err => console.log("Playback failed:", err));
+  playBtn.style.display = "none";
+});
+
 // Countdown
-let countdownEl = document.getElementById("countdown");
-let countdown = 3;
-let countdownInterval = setInterval(()=>{
-  countdown--;
-  if(countdown>0){
-    countdownEl.textContent = countdown;
-  } else {
-    clearInterval(countdownInterval);
-    countdownEl.style.display="none";
-    startFireworks();
-    setTimeout(showBirthdayPage,2000);
-  }
-},1000);
+let countdown=3;
+const countdownEl=document.getElementById("countdown");
+const intro=document.getElementById("intro");
+const main=document.getElementById("main");
+const fireworksCanvas=document.getElementById("fireworksCanvas");
+fireworksCanvas.width=window.innerWidth;
+fireworksCanvas.height=window.innerHeight;
+const ctx=fireworksCanvas.getContext("2d");
+
+function startCountdown(){
+  const timer=setInterval(()=>{
+    countdown--;
+    if(countdown>0){
+      countdownEl.textContent=countdown;
+    }else{
+      clearInterval(timer);
+      countdownEl.textContent='';
+      startFireworks();
+      setTimeout(showMainPage,2500); // show main after fireworks
+    }
+  },1000);
+}
+window.onload=startCountdown;
 
 // Fireworks
-const canvas = document.getElementById('fireworksCanvas');
-const ctx = canvas.getContext('2d');
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+let fireworks=[];
+function Firework(){
+  this.x=Math.random()*window.innerWidth;
+  this.y=window.innerHeight;
+  this.vx=(Math.random()-0.5)*4;
+  this.vy=-(Math.random()*8+12); // higher launch
+  this.particles=[];
+  this.exploded=false;
+}
+Firework.prototype.update=function(){
+  if(!this.exploded){
+    this.x+=this.vx;
+    this.y+=this.vy;
+    this.vy+=0.3; // gravity
 
-function random(min,max){return Math.random()*(max-min)+min;}
-function startFireworks(){
-  let particles=[];
-  let fireworkInterval = setInterval(()=>{
-    // launch firework
-    let fx = random(100,canvas.width-100);
-    let fy = random(canvas.height/2,canvas.height/3);
-    let colors=["#ff4d6d","#ffd166","#06d6a0","#118ab2","#ff758f"];
-    for(let i=0;i<80;i++){
-      particles.push({
-        x:fx,
-        y:canvas.height,
-        vx:Math.cos(i/80*2*Math.PI)*random(2,6),
-        vy:Math.sin(i/80*2*Math.PI)*random(2,6)-random(8,12),
-        color: colors[Math.floor(Math.random()*colors.length)],
-        alpha:1
-      });
+    // explode around centre of page
+    if(this.y <= window.innerHeight / 2){
+      this.exploded=true;
+      for(let i=0;i<50;i++){
+        this.particles.push({
+          x:this.x,
+          y:this.y,
+          vx:(Math.random()-0.5)*6,
+          vy:(Math.random()-0.5)*6,
+          alpha:1,
+          color:['#ff4d6d','#ffd166','#06d6a0','#118ab2'][Math.floor(Math.random()*4)]
+        });
+      }
     }
-  },500);
-
-  function animate(){
-    ctx.fillStyle="rgba(0,0,0,0.15)";
-    ctx.fillRect(0,0,canvas.width,canvas.height);
-    for(let i=particles.length-1;i>=0;i--){
-      let p = particles[i];
-      ctx.globalAlpha = p.alpha;
-      ctx.fillStyle = p.color;
-      ctx.beginPath();
-      ctx.arc(p.x,p.y,3,0,2*Math.PI);
-      ctx.fill();
+  }else{
+    this.particles.forEach(p=>{
       p.x+=p.vx;
       p.y+=p.vy;
-      p.vy+=0.1; // gravity
       p.alpha-=0.02;
-      if(p.alpha<=0) particles.splice(i,1);
-    }
-    if(particles.length>0) requestAnimationFrame(animate);
-    else clearInterval(fireworkInterval);
+    });
+    this.particles=this.particles.filter(p=>p.alpha>0);
   }
-  animate();
+}
+Firework.prototype.draw=function(){
+  if(!this.exploded){
+    ctx.fillStyle='white';
+    ctx.beginPath();
+    ctx.arc(this.x,this.y,3,0,Math.PI*2);
+    ctx.fill();
+  }else{
+    this.particles.forEach(p=>{
+      ctx.fillStyle=p.color;
+      ctx.globalAlpha=p.alpha;
+      ctx.beginPath();
+      ctx.arc(p.x,p.y,3,0,Math.PI*2);
+      ctx.fill();
+      ctx.globalAlpha=1;
+    });
+  }
 }
 
-// Show birthday page
-function showBirthdayPage(){
-  document.querySelector(".container").style.display="block";
+function startFireworks(){
+  for(let i=0;i<5;i++){
+    fireworks.push(new Firework());
+  }
+  animateFireworks();
+}
 
-  // Confetti
+function animateFireworks(){
+  ctx.clearRect(0,0,fireworksCanvas.width,fireworksCanvas.height);
+  fireworks.forEach(f=>{f.update(); f.draw();});
+  fireworks=fireworks.filter(f=>!f.exploded || f.particles.length>0);
+  if(fireworks.length>0){
+    requestAnimationFrame(animateFireworks);
+  }
+}
+
+// Show main page
+function showMainPage(){
+  intro.style.display="none";
+  main.style.display="block";
+  startConfetti();
+  showMessages();
+}
+
+// Sequential messages
+function showMessages(){
+  const msgs=document.querySelectorAll(".message");
+  msgs.forEach((m,i)=>{setTimeout(()=>{m.classList.add("show");}, i*1800);});
+}
+
+// Confetti
+function startConfetti(){
   for(let i=0;i<50;i++){
     let c=document.createElement("div");
     c.className="confetti";
@@ -242,22 +313,7 @@ function showBirthdayPage(){
     c.style.background=["#ff4d6d","#ffd166","#06d6a0","#118ab2"][Math.floor(Math.random()*4)];
     document.body.appendChild(c);
   }
-
-  // Sequential messages
-  const msgs=document.querySelectorAll(".message");
-  msgs.forEach((m,i)=>{setTimeout(()=>{m.classList.add("show");}, i*1800);});
-
-  // Heart beat
-  document.querySelector(".heart").classList.add("beat");
-}
-
-// Tap to play music
-function playMusic(){
-  const audio=document.getElementById("bgMusic");
-  audio.play().catch(err=>console.log("Audio play failed:",err));
-  document.getElementById("playBtn").style.display="none";
 }
 </script>
-
 </body>
 </html>
