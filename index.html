@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Happy Birthday Blossom ❤️</title>
+<title>Happy Birthday My Blossom ❤️</title>
 <link href="https://fonts.googleapis.com/css2?family=Parisienne&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 <style>
 body{
@@ -14,7 +14,7 @@ body{
   text-align:center;
 }
 
-/* Intro Background */
+/* Intro Countdown Section */
 #intro{
   width:100vw;
   height:100vh;
@@ -23,13 +23,22 @@ body{
   align-items:center;
   flex-direction:column;
   background: linear-gradient(135deg, #240046, #c9184a, #ff4d6d);
-  transition:opacity 1s ease;
+  position:relative;
 }
 
 #countdown{
   font-size:100px;
   font-family:'Parisienne',cursive;
   text-shadow: 0 0 20px #ffd166, 0 0 40px #ff4d6d;
+}
+
+/* Fireworks Canvas */
+#fireworksCanvas{
+  position:absolute;
+  top:0;left:0;
+  width:100%;
+  height:100%;
+  pointer-events:none;
 }
 
 /* Main Wishes Page */
@@ -100,19 +109,17 @@ h1{
   box-shadow:0 0 12px #ffd166,0 0 25px #ffd16688,0 0 40px #ff9f1c55;
   animation:flicker 0.25s infinite alternate;
 }
-
-/* Fireworks */
-.firework{position:absolute;width:5px;height:5px;border-radius:50%;pointer-events:none;}
 </style>
 </head>
 <body>
 
-<!-- Intro Countdown Section -->
+<!-- Intro Countdown -->
 <div id="intro">
+  <canvas id="fireworksCanvas"></canvas>
   <div id="countdown">3</div>
 </div>
 
-<!-- Main Wishes Section -->
+<!-- Main Wishes Page -->
 <div id="main">
 <h1>Happy 19th Birthday, Blossom ❤️</h1>
 <div class="heart beat"></div>
@@ -123,29 +130,29 @@ h1{
 <div class="balloon" style="left:50%;animation-duration:16s;background:#06d6a0"></div>
 <div class="balloon" style="left:70%;animation-duration:20s;background:#118ab2"></div>
 
-<!-- Confetti will be added by JS -->
+<!-- Confetti added by JS -->
 
 <!-- Photo -->
 <div class="photo-container">
   <img src="her.jpg" alt="My Blossom">
 </div>
 
-<!-- Messages -->
-<p class="message">To: My Best Friend💞, My Love❣️… My Blossom ❤️</p>
-<p class="message">Happy 19th Birthday, my love 💕…</p>
-<p class="message">"I’ve always thought attraction is more than just looks..."</p>
-<p class="message">And perhaps they were right…</p>
-<p class="message">As it is written in Jeremiah 29:11…</p>
-<p class="message">When I look at you, your ambition…</p>
-<p class="message">And your beauty—oh, your beauty!…</p>
-<p class="message">Mathematically, you are an 11/10…</p>
-<p class="message">And if Economics is the study of value…</p>
-<p class="message">Leonardo da Vinci once said…</p>
-<p class="message">In physics, imagination turns possibility into reality…</p>
+<!-- Full Original Birthday Messages -->
+<p class="message">To: My Best Friend💞, My Love❣️, My Dweeb🫠, My Nerd🤓, My four eyes😂, My 1️⃣, My 2️⃣, My 3️⃣, My 4️⃣, My 5️⃣, My 6️⃣, My 7️⃣, My 8️⃣, My 9️⃣, My 🔟, My Blossom ❤️</p>
+<p class="message">Happy 19th Birthday, my love 💕. Today, I celebrate not just the day you were born, but the incredible woman you are becoming. Every year you grow wiser, stronger, and more beautiful in ways that go far beyond appearances🩷</p>
+<p class="message">"I’ve always thought attraction is more than just looks, it’s about the person themselves. And you, you are the perfect example. Your character, behaviour, flaws, and everything about you are incredibly attractive. You don’t sound unrefined or unintelligent; instead, there’s a depth and understanding in you beyond your age that fascinates me. People like you are rare. And of course… you’re very pretty too, with your charmingly dweebish glasses🤓" Those were the words I used to confess how I felt about you indirectly, when I said it to Brendan, and I say them again, but this time, to you, and I mean every single word. I love you so much Blossom, more than I can describe, and the day we started talking to each other, I wondered if the stars looked at us and thought, <i>'oh! they finally met💞.'</i></p>
+<p class="message">And perhaps they were right. Because from that moment, something about you felt rare and meaningful, like meeting someone you were somehow always meant to know, and the way I look forward to your texts, replies, calls, daily updates, you’d be surprised🌚</p>
+<p class="message">As it is written in Jeremiah 29:11:<br>“For I know the plans I have for you,” declares the Lord, “plans to prosper you and not to harm you, plans to give you hope and a future, and i see you already with a bright future, Your Parents believe in you! your Sisters believe in you! Relatives believe in you! I believe in you! and I'm sure you believe in yourself! it's so obvious you're destined for greatness❤️</p>
+<p class="message">When I look at you, your ambition, your mind, your kindness, I truly believe you are walking toward something extraordinary. You are ambitious, determined, and beautiful inside and out. I could not be prouder of the future you are building and the way you see yourself. You are a powerful source of motivation in my life.</p>
+<p class="message">And your beauty—oh, your beauty! Those alluring eyes, that perfect smile, the way you articulate your thoughts, your understanding beyond your years, your care, your spiritual depth. I love you so deeply that English sometimes falls short, and I’m forced to use my "nerdy languages"😂</p>
+<p class="message">Mathematically, you are an 11/10. Imagine a 30-question True/False test: the chance of getting every answer wrong is 1 in 1,073,741,824, about 0.000000093%. That’s how rare and extraordinary you are🤩</p>
+<p class="message">And if Economics is the study of value and scarcity, then by supply and demand, you are priceless. Scarcity increases value, and there has never been—and will never be—another you. You are a limited edition, better still, the only edition🥹</p>
+<p class="message">Leonardo da Vinci once said, “Simplicity is the ultimate sophistication.” That’s you: effortless, extraordinary, perfect in every detail😎</p>
+<p class="message">In physics, imagination turns possibility into reality. I imagined you before I even knew you existed, imagined being with you, holding you, sharing a future together. And now, every glance, every smile, every thought of yours is like the perfect equation: precise, effortless, and breathtakingly beautiful❤️</p>
 <p class="message">You are what Art itself would call a "pièce de résistance"😍</p>
-<p class="message">I cherish you beyond measure…</p>
-<p class="message">Grow in grace, my friend, my best friend, my love…</p>
-<p class="message">PS: I learnt coding because of you…</p>
+<p class="message">I cherish you beyond measure. I love you in ways English cannot fully express, in ways that mathematics, science, and all the languages in the world can only attempt to describe.</p>
+<p class="message">Grow in grace, my friend, my best friend, my love. Happy Birthday once again!🎂</p>
+<p class="message">PS: I learnt coding because of you, and it was worth it! I almost cried typing this and I've edited this more than 20 times(I'm not even exaggerating 😂😭) because there’s always something to say about you. It is endless🤍</p>
 
 <!-- Cake -->
 <div class="cake">
@@ -164,16 +171,21 @@ h1{
   <source src="song.mp3" type="audio/mpeg">
 </audio>
 
-</div>
-
 <script>
 // Autoplay music
 const music = document.getElementById("bgMusic");
-music.play().catch(()=>{}); // for browsers that block autoplay
+music.play().catch(()=>{});
 
-// Countdown logic
+// Countdown
 let countdown = 3;
 const countdownEl = document.getElementById("countdown");
+const intro = document.getElementById("intro");
+const main = document.getElementById("main");
+const fireworksCanvas = document.getElementById("fireworksCanvas");
+fireworksCanvas.width = window.innerWidth;
+fireworksCanvas.height = window.innerHeight;
+const ctx = fireworksCanvas.getContext("2d");
+
 function startCountdown(){
   const timer = setInterval(()=>{
     countdown--;
@@ -181,23 +193,90 @@ function startCountdown(){
       countdownEl.textContent = countdown;
     }else{
       clearInterval(timer);
-      countdownEl.textContent = "🎆";
-      setTimeout(showMainPage,1000);
+      startFireworks();
+      setTimeout(showMainPage,2000); // show main after fireworks
     }
   },1000);
 }
 window.onload = startCountdown;
 
-// Show main wishes page
+// Fireworks
+let fireworks=[];
+function Firework(){
+  this.x=Math.random()*window.innerWidth;
+  this.y=window.innerHeight;
+  this.vx=(Math.random()-0.5)*6;
+  this.vy=-Math.random()*10-8;
+  this.particles=[];
+  this.done=false;
+}
+Firework.prototype.update=function(){
+  if(!this.done){
+    this.x+=this.vx;
+    this.y+=this.vy;
+    this.vy+=0.3; // gravity
+    if(this.vy>=0){
+      this.done=true;
+      for(let i=0;i<30;i++){
+        this.particles.push({
+          x:this.x,
+          y:this.y,
+          vx:(Math.random()-0.5)*6,
+          vy:(Math.random()-0.5)*6,
+          alpha:1,
+          color:['#ff4d6d','#ffd166','#06d6a0','#118ab2'][Math.floor(Math.random()*4)]
+        });
+      }
+    }
+  }else{
+    this.particles.forEach(p=>{
+      p.x+=p.vx;
+      p.y+=p.vy;
+      p.alpha-=0.02;
+    });
+    this.particles=this.particles.filter(p=>p.alpha>0);
+  }
+}
+Firework.prototype.draw=function(){
+  if(!this.done){
+    ctx.fillStyle='white';
+    ctx.beginPath();
+    ctx.arc(this.x,this.y,3,0,Math.PI*2);
+    ctx.fill();
+  }else{
+    this.particles.forEach(p=>{
+      ctx.fillStyle=p.color;
+      ctx.globalAlpha=p.alpha;
+      ctx.beginPath();
+      ctx.arc(p.x,p.y,3,0,Math.PI*2);
+      ctx.fill();
+      ctx.globalAlpha=1;
+    });
+  }
+}
+
+function startFireworks(){
+  for(let i=0;i<5;i++){
+    fireworks.push(new Firework());
+  }
+  animateFireworks();
+}
+
+function animateFireworks(){
+  ctx.clearRect(0,0,fireworksCanvas.width,fireworksCanvas.height);
+  fireworks.forEach(f=>{f.update(); f.draw();});
+  fireworks = fireworks.filter(f=>!f.done || f.particles.length>0);
+  if(fireworks.length>0){
+    requestAnimationFrame(animateFireworks);
+  }
+}
+
+// Show main page
 function showMainPage(){
-  document.getElementById("intro").style.opacity=0;
-  setTimeout(()=>{
-    document.getElementById("intro").style.display="none";
-    document.getElementById("main").style.display="block";
-    launchFireworks();
-    startConfetti();
-    showMessages();
-  },1000);
+  intro.style.display="none";
+  main.style.display="block";
+  startConfetti();
+  showMessages();
 }
 
 // Sequential messages
@@ -215,20 +294,6 @@ function startConfetti(){
     c.style.animationDuration=(Math.random()*3+2)+"s";
     c.style.background=["#ff4d6d","#ffd166","#06d6a0","#118ab2"][Math.floor(Math.random()*4)];
     document.body.appendChild(c);
-  }
-}
-
-// Fireworks
-function launchFireworks(){
-  for(let i=0;i<30;i++){
-    const f=document.createElement("div");
-    f.className="firework";
-    f.style.left=(50+Math.random()*40-20)+"vw";
-    f.style.top=(50+Math.random()*40-20)+"vh";
-    f.style.background=["#ff4d6d","#ffd166","#06d6a0","#118ab2"][Math.floor(Math.random()*4)];
-    f.style.width="5px"; f.style.height="5px";
-    document.body.appendChild(f);
-    setTimeout(()=>f.remove(),1500);
   }
 }
 </script>
