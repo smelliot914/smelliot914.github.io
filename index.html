@@ -3,11 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Happy Birthday My Blossom ❤️</title>
-
-<!-- Fonts -->
+<title>Happy Birthday Blossom ❤️</title>
 <link href="https://fonts.googleapis.com/css2?family=Parisienne&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-
 <style>
 body{
   margin:0;
@@ -15,15 +12,34 @@ body{
   overflow-x:hidden;
   color:white;
   text-align:center;
-  background:black;
 }
 
-/* Galaxy Background */
-#galaxyCanvas{
-  position:fixed;
-  top:0;left:0;
-  width:100vw;height:100vh;
-  z-index:-1;
+/* Intro Background */
+#intro{
+  width:100vw;
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+  background: linear-gradient(135deg, #240046, #c9184a, #ff4d6d);
+  transition:opacity 1s ease;
+}
+
+#countdown{
+  font-size:100px;
+  font-family:'Parisienne',cursive;
+  text-shadow: 0 0 20px #ffd166, 0 0 40px #ff4d6d;
+}
+
+/* Main Wishes Page */
+#main{
+  display:none;
+  min-height:100vh;
+  padding:20px;
+  background: linear-gradient(135deg,#240046,#6a0dad,#ff4d6d);
+  overflow-x:hidden;
+  overflow-y:auto;
 }
 
 /* Confetti */
@@ -53,14 +69,6 @@ h1{
   animation: glow 2.5s ease-in-out infinite alternate;
 }
 @keyframes glow{0%{text-shadow:0 0 10px #ffccd5;}100%{text-shadow:0 0 30px #ff4d6d;}}
-
-/* Countdown */
-#countdown{
-  font-size:80px;
-  margin:60px 0;
-  color:#ffd166;
-  text-shadow:0 0 20px #ffd166;
-}
 
 /* Messages */
 .message{opacity:0;transform:translateY(25px);transition:1s;line-height:1.9;margin-bottom:28px;font-size:17px;max-width:800px;margin-left:auto;margin-right:auto;}
@@ -92,18 +100,22 @@ h1{
   box-shadow:0 0 12px #ffd166,0 0 25px #ffd16688,0 0 40px #ff9f1c55;
   animation:flicker 0.25s infinite alternate;
 }
-@keyframes flicker{0%{transform:scale(1) translateY(0);}50%{transform:scale(1.2) translateY(-2px);}100%{transform:scale(1) translateY(0);}}
 
-/* Fireworks placeholder */
-.firework{position:absolute;width:5px;height:5px;border-radius:50%;background:white;pointer-events:none;}
-
-/* Button hidden */
-button{display:none;}
+/* Fireworks */
+.firework{position:absolute;width:5px;height:5px;border-radius:50%;pointer-events:none;}
 </style>
 </head>
 <body>
 
-<canvas id="galaxyCanvas"></canvas>
+<!-- Intro Countdown Section -->
+<div id="intro">
+  <div id="countdown">3</div>
+</div>
+
+<!-- Main Wishes Section -->
+<div id="main">
+<h1>Happy 19th Birthday, Blossom ❤️</h1>
+<div class="heart beat"></div>
 
 <!-- Balloons -->
 <div class="balloon" style="left:10%;animation-duration:15s;background:#ff758f"></div>
@@ -111,12 +123,7 @@ button{display:none;}
 <div class="balloon" style="left:50%;animation-duration:16s;background:#06d6a0"></div>
 <div class="balloon" style="left:70%;animation-duration:20s;background:#118ab2"></div>
 
-<div class="container">
-<h1>Happy 19th Birthday, Blossom ❤️</h1>
-<div class="heart beat"></div>
-
-<!-- Countdown -->
-<div id="countdown">3</div>
+<!-- Confetti will be added by JS -->
 
 <!-- Photo -->
 <div class="photo-container">
@@ -124,21 +131,21 @@ button{display:none;}
 </div>
 
 <!-- Messages -->
-<p class="message">To: My Best Friend💞, My Love❣️, My Dweeb🫠… My Blossom ❤️</p>
-<p class="message">Happy 19th Birthday, my love 💕...</p>
+<p class="message">To: My Best Friend💞, My Love❣️… My Blossom ❤️</p>
+<p class="message">Happy 19th Birthday, my love 💕…</p>
 <p class="message">"I’ve always thought attraction is more than just looks..."</p>
-<p class="message">And perhaps they were right...</p>
-<p class="message">As it is written in Jeremiah 29:11...</p>
-<p class="message">When I look at you, your ambition...</p>
-<p class="message">And your beauty—oh, your beauty!...</p>
-<p class="message">Mathematically, you are an 11/10...</p>
-<p class="message">And if Economics is the study of value...</p>
-<p class="message">Leonardo da Vinci once said...</p>
-<p class="message">In physics, imagination turns possibility into reality...</p>
+<p class="message">And perhaps they were right…</p>
+<p class="message">As it is written in Jeremiah 29:11…</p>
+<p class="message">When I look at you, your ambition…</p>
+<p class="message">And your beauty—oh, your beauty!…</p>
+<p class="message">Mathematically, you are an 11/10…</p>
+<p class="message">And if Economics is the study of value…</p>
+<p class="message">Leonardo da Vinci once said…</p>
+<p class="message">In physics, imagination turns possibility into reality…</p>
 <p class="message">You are what Art itself would call a "pièce de résistance"😍</p>
-<p class="message">I cherish you beyond measure...</p>
-<p class="message">Grow in grace, my friend, my best friend, my love...</p>
-<p class="message">PS: I learnt coding because of you...</p>
+<p class="message">I cherish you beyond measure…</p>
+<p class="message">Grow in grace, my friend, my best friend, my love…</p>
+<p class="message">PS: I learnt coding because of you…</p>
 
 <!-- Cake -->
 <div class="cake">
@@ -153,42 +160,44 @@ button{display:none;}
   </div>
 </div>
 
-<audio id="bgMusic" autoplay loop><source src="song.mp3" type="audio/mpeg"></audio>
+<audio id="bgMusic" autoplay loop>
+  <source src="song.mp3" type="audio/mpeg">
+</audio>
+
 </div>
 
 <script>
-// Galaxy Background
-const canvas = document.getElementById("galaxyCanvas");
-const ctx = canvas.getContext("2d");
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
-const stars = [];
-for(let i=0;i<200;i++){
-  stars.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height,r:Math.random()*1.2});
-}
-function drawStars(){
-  ctx.fillStyle="black";
-  ctx.fillRect(0,0,canvas.width,canvas.height);
-  ctx.fillStyle="white";
-  stars.forEach(s=>{
-    ctx.beginPath();
-    ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
-    ctx.fill();
-    s.y+=0.3;
-    if(s.y>canvas.height){s.y=0;s.x=Math.random()*canvas.width;}
-  });
-  requestAnimationFrame(drawStars);
-}
-drawStars();
+// Autoplay music
+const music = document.getElementById("bgMusic");
+music.play().catch(()=>{}); // for browsers that block autoplay
 
-// Confetti
-for(let i=0;i<50;i++){
-  let c=document.createElement("div");
-  c.className="confetti";
-  c.style.left=Math.random()*100+"vw";
-  c.style.animationDuration=(Math.random()*3+2)+"s";
-  c.style.background=["#ff4d6d","#ffd166","#06d6a0","#118ab2"][Math.floor(Math.random()*4)];
-  document.body.appendChild(c);
+// Countdown logic
+let countdown = 3;
+const countdownEl = document.getElementById("countdown");
+function startCountdown(){
+  const timer = setInterval(()=>{
+    countdown--;
+    if(countdown>0){
+      countdownEl.textContent = countdown;
+    }else{
+      clearInterval(timer);
+      countdownEl.textContent = "🎆";
+      setTimeout(showMainPage,1000);
+    }
+  },1000);
+}
+window.onload = startCountdown;
+
+// Show main wishes page
+function showMainPage(){
+  document.getElementById("intro").style.opacity=0;
+  setTimeout(()=>{
+    document.getElementById("intro").style.display="none";
+    document.getElementById("main").style.display="block";
+    launchFireworks();
+    startConfetti();
+    showMessages();
+  },1000);
 }
 
 // Sequential messages
@@ -197,20 +206,19 @@ function showMessages(){
   msgs.forEach((m,i)=>{setTimeout(()=>{m.classList.add("show");}, i*1800);});
 }
 
-// Countdown + fireworks
-const countdownEl=document.getElementById("countdown");
-let count=3;
-function countdown(){
-  if(count>1){count--;countdownEl.textContent=count;setTimeout(countdown,1000);}
-  else{
-    countdownEl.textContent="🎉";
-    launchFireworks();
-    showMessages();
+// Confetti
+function startConfetti(){
+  for(let i=0;i<50;i++){
+    let c=document.createElement("div");
+    c.className="confetti";
+    c.style.left=Math.random()*100+"vw";
+    c.style.animationDuration=(Math.random()*3+2)+"s";
+    c.style.background=["#ff4d6d","#ffd166","#06d6a0","#118ab2"][Math.floor(Math.random()*4)];
+    document.body.appendChild(c);
   }
 }
-setTimeout(countdown,1000);
 
-// Simple fireworks
+// Fireworks
 function launchFireworks(){
   for(let i=0;i<30;i++){
     const f=document.createElement("div");
@@ -218,15 +226,11 @@ function launchFireworks(){
     f.style.left=(50+Math.random()*40-20)+"vw";
     f.style.top=(50+Math.random()*40-20)+"vh";
     f.style.background=["#ff4d6d","#ffd166","#06d6a0","#118ab2"][Math.floor(Math.random()*4)];
-    f.style.width="5px";f.style.height="5px";
+    f.style.width="5px"; f.style.height="5px";
     document.body.appendChild(f);
     setTimeout(()=>f.remove(),1500);
   }
 }
-
-// Heart and Music already start
-document.querySelector(".heart").classList.add("beat");
-document.getElementById("bgMusic").play().catch(()=>{});
 </script>
 </body>
 </html>
