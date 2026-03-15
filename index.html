@@ -185,110 +185,135 @@ h1{
 // Tap to play music
 const playBtn = document.getElementById("playBtn");
 const bgMusic = document.getElementById("bgMusic");
-
 playBtn.addEventListener("click", () => {
   bgMusic.play().catch(err => console.log("Playback failed:", err));
   playBtn.style.display = "none";
 });
 
 // Countdown
-let countdown = 3;
-const countdownEl = document.getElementById("countdown");
-const intro = document.getElementById("intro");
-const main = document.getElementById("main");
-const fireworksCanvas = document.getElementById("fireworksCanvas");
-fireworksCanvas.width = window.innerWidth;
-fireworksCanvas.height = window.innerHeight;
-const ctx = fireworksCanvas.getContext("2d");
+let countdown=3;
+const countdownEl=document.getElementById("countdown");
+const intro=document.getElementById("intro");
+const main=document.getElementById("main");
+const fireworksCanvas=document.getElementById("fireworksCanvas");
+fireworksCanvas.width=window.innerWidth;
+fireworksCanvas.height=window.innerHeight;
+const ctx=fireworksCanvas.getContext("2d");
 
-const colors = ['#ff4d6d','#ffd166','#06d6a0','#118ab2','#ff85a1','#ffba08'];
-
-class Firework {
-  constructor(x, y) {
-    this.x = x;
-    this.y = y;
-    this.particles = [];
-    this.finished = false;
-    // spawn 8-10 particles max
-    for (let i=0;i<10;i++){
-      const angle = Math.random()*Math.PI*2;
-      const speed = Math.random()*3 + 2;
-      this.particles.push({
-        x:this.x, y:this.y,
-        vx: Math.cos(angle)*speed,
-        vy: Math.sin(angle)*speed,
-        alpha:1,
-        color: colors[Math.floor(Math.random()*colors.length)],
-      });
+function startCountdown(){
+  const timer=setInterval(()=>{
+    countdown--;
+    if(countdown>0){
+      countdownEl.textContent=countdown;
+    }else{
+      clearInterval(timer);
+      countdownEl.textContent='';
+      startFireworks();
+      setTimeout(showMainPage,2500);
     }
-  }
-  update() {
-    this.particles.forEach(p => {
-      p.x += p.vx;
-      p.y += p.vy;
-      p.vy += 0.05; // gravity
-      p.alpha -= 0.03;
-    });
-    this.particles = this.particles.filter(p=>p.alpha>0);
-    if(this.particles.length===0) this.finished=true;
-  }
-  draw() {
+  },1000);
+}
+window.onload=startCountdown;
+
+// Fireworks
+let fireworks=[];
+function Firework(){
+  this.x=Math.random()*window.innerWidth;
+  this.y=window.innerHeight;
+  this.vx=(Math.random()-0.5)*4;
+  this.vy=-(Math.random()*8+12);
+  this.particles=[];
+  this.exploded=false;
+}
+Firework.prototype.update=function(){
+  if(!this.exploded){
+    this.x+=this.vx;
+    this.y+=this.vy;
+    this.vy+=0.3; // gravity
+
+    // explode higher
+    if(this.y <= window.innerHeight / 3){
+      this.exploded=true;
+      for(let i=0;i<80;i++){ // more particles
+        this.particles.push({
+          x:this.x,
+          y:this.y,
+          vx:(Math.random()-0.5)*8,
+          vy:(Math.random()-0.5)*8,
+          alpha:1,
+          color:['#ff4d6d','#ffd166','#06d6a0','#118ab2'][Math.floor(Math.random()*4)]
+        });
+      }
+    }
+  }else{
     this.particles.forEach(p=>{
-      ctx.fillStyle = p.color;
-      ctx.globalAlpha = p.alpha;
+      p.x+=p.vx;
+      p.y+=p.vy;
+      p.alpha-=0.02;
+    });
+    this.particles=this.particles.filter(p=>p.alpha>0);
+  }
+}
+Firework.prototype.draw=function(){
+  if(!this.exploded){
+    ctx.fillStyle='white';
+    ctx.beginPath();
+    ctx.arc(this.x,this.y,3,0,Math.PI*2);
+    ctx.fill();
+  }else{
+    this.particles.forEach(p=>{
+      ctx.fillStyle=p.color;
+      ctx.globalAlpha=p.alpha;
       ctx.beginPath();
-      ctx.arc(p.x,p.y,2,0,Math.PI*2);
+      ctx.arc(p.x,p.y,Math.random()*3+1,0,Math.PI*2); // spark size
       ctx.fill();
       ctx.globalAlpha=1;
     });
   }
 }
 
-let fireworks = [];
+function startFireworks(){
+  for(let i=0;i<5;i++){
+    fireworks.push(new Firework());
+  }
+  animateFireworks();
+}
 
-function animate() {
-  ctx.fillStyle = 'rgba(0,0,0,0.2)';
+function animateFireworks(){
+  ctx.fillStyle='rgba(0,0,0,0.15)'; // trail effect
   ctx.fillRect(0,0,fireworksCanvas.width,fireworksCanvas.height);
-  fireworks.forEach(f=>{ f.update(); f.draw(); });
-  fireworks = fireworks.filter(f=>!f.finished);
-  if(fireworks.length>0) requestAnimationFrame(animate);
+  fireworks.forEach(f=>{f.update(); f.draw();});
+  fireworks=fireworks.filter(f=>!f.exploded || f.particles.length>0);
+  if(fireworks.length>0){
+    requestAnimationFrame(animateFireworks);
+  }
 }
 
-function launchFirework() {
-  // single firework in center
-  fireworks.push(new Firework(window.innerWidth/2, window.innerHeight/2));
-  animate();
+// Show main page
+function showMainPage(){
+  intro.style.display="none";
+  main.style.display="block";
+  startConfetti();
+  showMessages();
 }
 
-function startCountdown(){
-  const timer = setInterval(()=>{
-    countdownEl.textContent = countdown;
-    launchFirework(); // one firework per countdown number
-    countdown--;
-    if(countdown < 0){
-      clearInterval(timer);
-      countdownEl.textContent='';
-      setTimeout(()=>{ intro.style.display="none"; main.style.display="block"; startConfetti(); }, 500);
-    }
-  },1000);
+// Sequential messages
+function showMessages(){
+  const msgs=document.querySelectorAll(".message");
+  msgs.forEach((m,i)=>{setTimeout(()=>{m.classList.add("show");}, i*1800);});
 }
 
-window.onload = startCountdown;
-
-// Confetti (unchanged)
+// Confetti
 function startConfetti(){
   for(let i=0;i<50;i++){
     let c=document.createElement("div");
     c.className="confetti";
     c.style.left=Math.random()*100+"vw";
     c.style.animationDuration=(Math.random()*3+2)+"s";
-    c.style.background=colors[Math.floor(Math.random()*colors.length)];
+    c.style.background=["#ff4d6d","#ffd166","#06d6a0","#118ab2"][Math.floor(Math.random()*4)];
     document.body.appendChild(c);
   }
 }
-
-// Handle window resize
-window.addEventListener('resize',()=>{
-  fireworksCanvas.width = window.innerWidth;
-  fireworksCanvas.height = window.innerHeight;
-});
+</script>
+</body>
+</html>
