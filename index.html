@@ -146,22 +146,22 @@ h1{
   <img src="her.jpg" alt="My Blossom">
 </div>
 
-<!-- Messages -->
+<!-- All Original Messages -->
 <p class="message">To: My Best Friend💞, My Love❣️, My Dweeb🫠, My Nerd🤓, My four eyes😂, My 1️⃣, My 2️⃣, My 3️⃣, My 4️⃣, My 5️⃣, My 6️⃣, My 7️⃣, My 8️⃣, My 9️⃣, My 🔟, My Blossom ❤️</p>
 <p class="message">Happy 19th Birthday, my love 💕. Today, I celebrate not just the day you were born, but the incredible woman you are becoming. Every year you grow wiser, stronger, and more beautiful in ways that go far beyond appearances🩷</p>
-<p class="message"><i>'I’ve always thought attraction is more than just looks, it’s about the person themselves. And you, you are the perfect example...'</i> Those were the words I used to confess...</p>
-<p class="message">And perhaps they were right. Because from that moment, something about you felt rare and meaningful...</p>
-<p class="message">As it is written in Jeremiah 29:11: “For I know the plans I have for you...”</p>
-<p class="message">When I look at you, your ambition, your mind, your kindness, I truly believe...</p>
-<p class="message">And your beauty—oh, your beauty! Those alluring eyes, that perfect smile...</p>
-<p class="message">Mathematically, you are an 11/10...</p>
-<p class="message">And if Economics is the study of value and scarcity...</p>
-<p class="message">Leonardo da Vinci once said, “Simplicity is the ultimate sophistication.”</p>
-<p class="message">In physics, imagination turns possibility into reality...</p>
+<p class="message"><i>'I’ve always thought attraction is more than just looks, it’s about the person themselves. And you, you are the perfect example. Your character, behaviour, flaws, and everything about you are incredibly attractive. You don’t sound unrefined or unintelligent; instead, there’s a depth and understanding in you beyond your age that fascinates me. People like you are rare. And of course… you’re very pretty too, with your charmingly dweebish glasses🤓'</i> Those were the words I used to confess how I felt about you indirectly, when I said it to Brendan, and I say them again, but this time, to you, and I mean every single word. I love you so much Blossom, more than I can describe, and the day we started talking to each other, I wondered if the stars looked at us and thought, <i>'oh! they finally met💞.'</i></p>
+<p class="message">And perhaps they were right. Because from that moment, something about you felt rare and meaningful, like meeting someone you were somehow always meant to know, and the way I look forward to your texts, replies, calls, daily updates, you’d be surprised🌚</p>
+<p class="message">As it is written in Jeremiah 29:11:<br>“For I know the plans I have for you,” declares the Lord, “plans to prosper you and not to harm you, plans to give you hope and a future, and i see you already with a bright future, Your Parents believe in you! your Sisters believe in you! Relatives believe in you! I believe in you! and I'm sure you believe in yourself! it's so obvious you're destined for greatness❤️</p>
+<p class="message">When I look at you, your ambition, your mind, your kindness, I truly believe you are walking toward something extraordinary. You are ambitious, determined, and beautiful inside and out. I could not be prouder of the future you are building and the way you see yourself. You are a powerful source of motivation in my life.</p>
+<p class="message">And your beauty—oh, your beauty! Those alluring eyes, that perfect smile, the way you articulate your thoughts, your understanding beyond your years, your care, your spiritual depth. I love you so deeply that English sometimes falls short, and I’m forced to use my "nerdy languages"😂</p>
+<p class="message">Mathematically, you are an 11/10. Imagine a 30-question True/False test: the chance of getting every answer wrong is 1 in 1,073,741,824, about 0.000000093%. That’s how rare and extraordinary you are🤩</p>
+<p class="message">And if Economics is the study of value and scarcity, then by supply and demand, you are priceless. Scarcity increases value, and there has never been—and will never be—another you. You are a limited edition, better still, the only edition🥹</p>
+<p class="message">Leonardo da Vinci once said, “Simplicity is the ultimate sophistication.” That’s you: effortless, extraordinary, perfect in every detail😎</p>
+<p class="message">In physics, imagination turns possibility into reality. I imagined you before I even knew you existed, imagined being with you, holding you, sharing a future together. And now, every glance, every smile, every thought of yours is like the perfect equation: precise, effortless, and breathtakingly beautiful❤️</p>
 <p class="message">You are what Art itself would call <i>'pièce de résistance'😍</i></p>
-<p class="message">I cherish you beyond measure...</p>
+<p class="message">I cherish you beyond measure. I love you in ways English cannot fully express, in ways that mathematics, science, and all the languages in the world can only attempt to describe.</p>
 <p class="message">Grow in grace, my friend, my best friend, my love. Happy Birthday once again!🎂</p>
-<p class="message">PS: I learnt coding because of you, and it was worth it!...</p>
+<p class="message">PS: I learnt coding because of you, and it was worth it! Except the cake below didn't turn out perfectly🥲. I almost cried typing this and I've edited this more than 70 times(I'm not even exaggerating 😂😭) because there’s always something to say about you. It is endless🤍</p>
 
 <!-- Cake -->
 <div class="cake">
@@ -176,18 +176,19 @@ h1{
   </div>
 </div>
 
-<!-- Music -->
+<!-- Background Music -->
 <audio id="bgMusic" loop>
   <source src="say_you_wont_let_go.mp3" type="audio/mpeg">
 </audio>
 
 <script>
-// Music
+// Tap to play music
 const playBtn = document.getElementById("playBtn");
 const bgMusic = document.getElementById("bgMusic");
-playBtn.addEventListener("click", ()=>{
-  bgMusic.play().catch(err=>console.log(err));
-  playBtn.style.display="none";
+
+playBtn.addEventListener("click", () => {
+  bgMusic.play().catch(err => console.log("Playback failed:", err));
+  playBtn.style.display = "none";
 });
 
 // Countdown
@@ -195,20 +196,21 @@ let countdown=3;
 const countdownEl=document.getElementById("countdown");
 const intro=document.getElementById("intro");
 const main=document.getElementById("main");
-const canvas=document.getElementById("fireworksCanvas");
-canvas.width=window.innerWidth;
-canvas.height=window.innerHeight;
-const ctx=canvas.getContext("2d");
+const fireworksCanvas=document.getElementById("fireworksCanvas");
+fireworksCanvas.width=window.innerWidth;
+fireworksCanvas.height=window.innerHeight;
+const ctx=fireworksCanvas.getContext("2d");
 
 function startCountdown(){
   const timer=setInterval(()=>{
     countdown--;
-    if(countdown>0){countdownEl.textContent=countdown;}
-    else{
+    if(countdown>0){
+      countdownEl.textContent=countdown;
+    }else{
       clearInterval(timer);
       countdownEl.textContent='';
-      launchFireworks();
-      setTimeout(showMainPage,3000);
+      startFireworks();
+      setTimeout(showMainPage,2500); // show main after fireworks
     }
   },1000);
 }
@@ -218,9 +220,9 @@ window.onload=startCountdown;
 let fireworks=[];
 function Firework(){
   this.x=Math.random()*window.innerWidth;
-  this.y=canvas.height;
+  this.y=window.innerHeight;
   this.vx=(Math.random()-0.5)*4;
-  this.vy=-(Math.random()*8+12);
+  this.vy=-(Math.random()*8+12); // higher launch
   this.particles=[];
   this.exploded=false;
 }
@@ -228,22 +230,28 @@ Firework.prototype.update=function(){
   if(!this.exploded){
     this.x+=this.vx;
     this.y+=this.vy;
-    this.vy+=0.3;
-    if(this.y <= Math.random()*canvas.height/2.5 + canvas.height/5){
+    this.vy+=0.3; // gravity
+
+    // explode around centre of page
+    if(this.y <= window.innerHeight / 2){
       this.exploded=true;
-      for(let i=0;i<80;i++){
+      for(let i=0;i<50;i++){
         this.particles.push({
           x:this.x,
           y:this.y,
-          vx:(Math.random()-0.5)*8,
-          vy:(Math.random()-0.5)*8,
+          vx:(Math.random()-0.5)*6,
+          vy:(Math.random()-0.5)*6,
           alpha:1,
           color:['#ff4d6d','#ffd166','#06d6a0','#118ab2'][Math.floor(Math.random()*4)]
         });
       }
     }
-  } else {
-    this.particles.forEach(p=>{p.x+=p.vx;p.y+=p.vy;p.alpha-=0.02;});
+  }else{
+    this.particles.forEach(p=>{
+      p.x+=p.vx;
+      p.y+=p.vy;
+      p.alpha-=0.02;
+    });
     this.particles=this.particles.filter(p=>p.alpha>0);
   }
 }
@@ -251,34 +259,29 @@ Firework.prototype.draw=function(){
   if(!this.exploded){
     ctx.fillStyle='white';
     ctx.beginPath();
-    ctx.arc(this.x,this.y,3,0,2*Math.PI);
+    ctx.arc(this.x,this.y,3,0,Math.PI*2);
     ctx.fill();
-  } else {
+  }else{
     this.particles.forEach(p=>{
       ctx.fillStyle=p.color;
       ctx.globalAlpha=p.alpha;
       ctx.beginPath();
-      ctx.arc(p.x,p.y,Math.random()*3+1,0,2*Math.PI);
+      ctx.arc(p.x,p.y,3,0,Math.PI*2);
       ctx.fill();
       ctx.globalAlpha=1;
     });
   }
 }
 
-function launchFireworks(){
-  let interval=setInterval(()=>{
-    if(fireworks.length<15){
-      fireworks.push(new Firework());
-    } else {
-      clearInterval(interval);
-    }
-    animateFireworks();
-  }, 300);
+function startFireworks(){
+  for(let i=0;i<5;i++){
+    fireworks.push(new Firework());
+  }
+  animateFireworks();
 }
 
 function animateFireworks(){
-  ctx.fillStyle='rgba(0,0,0,0.15)';
-  ctx.fillRect(0,0,canvas.width,canvas.height);
+  ctx.clearRect(0,0,fireworksCanvas.width,fireworksCanvas.height);
   fireworks.forEach(f=>{f.update(); f.draw();});
   fireworks=fireworks.filter(f=>!f.exploded || f.particles.length>0);
   if(fireworks.length>0){
@@ -286,7 +289,7 @@ function animateFireworks(){
   }
 }
 
-// Main page
+// Show main page
 function showMainPage(){
   intro.style.display="none";
   main.style.display="block";
@@ -294,7 +297,7 @@ function showMainPage(){
   showMessages();
 }
 
-// Messages
+// Sequential messages
 function showMessages(){
   const msgs=document.querySelectorAll(".message");
   msgs.forEach((m,i)=>{setTimeout(()=>{m.classList.add("show");}, i*1800);});
@@ -313,4 +316,4 @@ function startConfetti(){
 }
 </script>
 </body>
-</html>
+                                                   </html>
